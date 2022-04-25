@@ -7,11 +7,11 @@ plugin.tx_recaptcha {
 
 	# look at https://www.google.com/recaptcha/admin to register a key for your server
 	# cat=plugin.recaptcha//03; type=string; label= reCAPTCHA public key: Public key of your reCAPTCHA-account
-	public_key = 6Lc38aMdAAAAAPqzNricR5JykJ9bJmwV_GdAtvZe
+	public_key =
 
 	# look at https://www.google.com/recaptcha/admin to register a key for your server
 	# cat=plugin.recaptcha//04; type=string; label= reCAPTCHA private key: Private key of your reCAPTCHA-account
-	private_key = 6Lc38aMdAAAAAFeOXq4T3BODSW2nsiWrndcYOupN
+	private_key =
 
 	# cat=plugin.recaptcha//06; type=string; label= reCAPTCHA language: Language of reCAPTCHA frontend (autodetected if empty)
 	lang = ?hl=de
@@ -32,12 +32,3 @@ plugin.tx_recaptcha {
 	robotMode = 0
 }
 
-/* Keys
-v2
-siteKey = 6LffqW8cAAAAAHDj0H40SgzcJLrUHhM5_c0PX1e5
-secretKey = 6LffqW8cAAAAAACPPgPTiN2BMjHQIwogzh-AfDDQ
-
-v3
-siteKey = 6Le7qm8cAAAAAIwZkdocMg0IYo_eYb7GF5pkimjd
-secretKey = 6Le7qm8cAAAAAPRvKkj0wqTJdY223kRMtZrx25Xs
-*/

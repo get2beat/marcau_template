@@ -1,0 +1,25 @@
+<section class="m-modul-trennlinie {data.tx_modul_backgroundcolor}">
+    <div class="m-linebreak m-layout px-6 xl:px-0 mx-auto flex justify-center revealelemwitdh">
+        <f:if condition="{data.tx_modul_select_trennlinie} == 2">
+            <f:then>
+                <div class="w-full xl:w-3/6">
+                    <f:if condition="{data.tx_modul_backgroundcolor} == 'color-dunkel'">
+                        <f:then>
+                            <f:image class="w-auto p-6 xl:p-12" src="{settings.page.linebreak-inverted}" alt="Trennlinie"/>
+                        </f:then>
+                        <f:else>
+                            <f:image class="w-auto p-6 xl:p-12" src="{settings.page.linebreak}" alt="Trennlinie"/>
+                        </f:else>
+                    </f:if>
+                </div>
+            </f:then>
+            <f:else>
+                <div class="w-full py-1 ">
+                    <div class="border-b border-mittel">
+                    </div>
+                </div>
+            </f:else>
+        </f:if>
+    </div>
+</section>
+

@@ -1,0 +1,11 @@
+<svg version="1.1" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(53.102 -2.3898)">
+  <rect x="-53.102" y="2.3898" width="600" height="400" fill="#111b2b"/>
+ </g>
+ <g transform="translate(53.102 -2.3898)">
+  <g fill="#fff" stroke-width="5.8681" aria-label="K">
+   <path d="m238.36 190.99-33.565 34.034v43.188h-17.369v-164.3h17.369v99.287l96.47-99.287h19.951l-71.12 74.406 76.049 89.898h-20.655z" stroke-width="5.8681"/>
+  </g>
+  <path d="m-3.3877 352.25h509.14" fill="#d71c1c" stroke="#fff" stroke-width="15.7"/>
+ </g>
+</svg>

@@ -1,0 +1,67 @@
+<div class="xl:hidden">
+    <a href="#menu-mobile">
+        <div class="m-hamburger w-6 h-20 appearance-none ml-5 border-0 bg-transparent xl:hidden" id="hamburger">
+            <span class="m-hamburger__icon relative inline-block w-6 h-1 {f:if(condition: '{settings.page.header-background} == \'color-dunkel\'', then:'bg-white', else:'bg-black')}"></span>
+            <span class="m-hamburger__icon relative inline-block w-6 h-1 {f:if(condition: '{settings.page.header-background} == \'color-dunkel\'', then:'bg-white', else:'bg-black')}"></span>
+            <span class="m-hamburger__icon relative inline-block w-6 h-1 {f:if(condition: '{settings.page.header-background} == \'color-dunkel\'', then:'bg-white', else:'bg-black')}"></span>
+        </div>
+    </a>
+    <nav id="menu-mobile">
+        <ul>
+            <f:for each="{mainnavigation}" as="mainnavigationItem">
+                <f:if condition="{mainnavigationItem.children}">
+                    <f:then>
+                        <li>
+                            <span>{mainnavigationItem.title}</span>
+                            <ul>
+                                <f:for each="{mainnavigationItem.children}" as="mainnavigationSubItemLvl1">
+                                    <li class="{f:if(condition: mainnavigationSubItemLvl1.active, then:'Selected font-bold')}"><a href="{mainnavigationSubItemLvl1.link}"  target="{mainnavigationSubItemLvl1.target}" title="{mainnavigationSubItemLvl1.title}">{mainnavigationSubItemLvl1.title}</a></li>
+                                </f:for>
+                            </ul>
+                        </li>
+                    </f:then>
+                    <f:else>
+                        <f:if condition="{mainnavigationItem.active}">
+                            <f:then>
+                                <li class="Selected font-bold" ><a href="{mainnavigationItem.link}" target="{mainnavigationItem.target}" title="{mainnavigationItem.title}">{mainnavigationItem.title}</a></li>
+                            </f:then>
+                            <f:else>
+                                <li><a href="{mainnavigationItem.link}" class="" target="{mainnavigationItem.target}" title="{mainnavigationItem.title}">{mainnavigationItem.title}</a></li>
+                            </f:else>
+                        </f:if>
+                    </f:else>
+                </f:if>
+            </f:for>
+            <li class="h-16">
+&nbsp;
+            </li>
+            <f:if condition="{footernavigation->f:count()} > 2">
+                <f:then>
+                    <f:for each="{footernavigation}" as="footernavigationItem" iteration="fniter">
+                        <f:if condition="{fniter.isOdd}">
+                            <li>
+                                <a class="block no-underline m-text-footernav-mobile {f:if(condition: footernavigationItem.active, then:'Selected font-bold')}" href="{footernavigationItem.link}" {f:if(condition:footernavigationItem.target, then: ' target="{footernavigationItem.target}"')} title="{footernavigationItem.title}">
+                                {footernavigationItem.title}
+                                </a>
+                        </f:if>
+                        <f:if condition="{fniter.isEven}">
+                                <a class="block no-underline m-text-footernav-mobile {f:if(condition: footernavigationItem.active, then:'Selected font-bold')}" href="{footernavigationItem.link}" {f:if(condition:footernavigationItem.target, then: ' target="{footernavigationItem.target}"')} title="{footernavigationItem.title}">
+                                {footernavigationItem.title}
+                                </a>
+                            </li>
+                        </f:if>
+                    </f:for>
+                </f:then>
+                <f:else>
+                    <li>
+                        <f:for each="{footernavigation}" as="footernavigationItem">
+                            <a class="block no-underline m-text-footernav-mobile {f:if(condition: footernavigationItem.active, then:'Selected font-bold')}" href="{footernavigationItem.link}" {f:if(condition:footernavigationItem.target, then: ' target="{footernavigationItem.target}"')} title="{footernavigationItem.title}">
+                            {footernavigationItem.title}
+                            </a>
+                        </f:for>
+                    </li>
+                </f:else>
+            </f:if>
+        </ul>
+    </nav>
+</div>

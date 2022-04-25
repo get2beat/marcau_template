@@ -1,0 +1,108 @@
+tt_content.modul_text = FLUIDTEMPLATE
+tt_content.modul_text {
+    layoutRootPaths.0 = EXT:marcau_template/Resources/Private/Layouts/Module/
+    layoutRootPaths.10 = {$plugin.tx_marcautemplate.view.layoutRootPath}
+    partialRootPaths.0 = EXT:marcau_template/Resources/Private/Partials/Module/
+    partialRootPaths.10 = {$plugin.tx_marcautemplate.view.partialRootPath}
+    templateRootPaths.0 = EXT:marcau_template/Resources/Private/Templates/Module/
+    templateRootPaths.10 = {$plugin.tx_marcautemplate.view.templateRootPath}
+    templateName = Text
+}
+tt_content.modul_text.settings.page.linebreak = {$settings.page.linebreak}
+tt_content.modul_text.settings.page.linebreak-inverted = {$settings.page.linebreak-inverted}
+tt_content.modul_text.settings.page.button = {$settings.page.button}
+tt_content.modul_text.settings.page.button-transparenz = {$settings.page.button-transparenz}
+tt_content.modul_text.settings.page.layout = {$settings.page.layout}
+tt_content.modul_text.settings.page.layout = {$settings.page.layout}
+tt_content.modul_text.settings.page.animation.bildtext = {$settings.animation.bildtext}
+
+
+tt_content.modul_bildtext <  tt_content.modul_text
+tt_content.modul_bildtext {
+    templateName = BildText
+    dataProcessing.10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+    dataProcessing.10 {
+        if.isTrue.field = assets
+        references {
+            fieldName = assets
+            table = tt_content
+        }
+        as = data_tx_modul_bild
+    }
+}
+tt_content.modul_header <  tt_content.modul_text
+tt_content.modul_header {
+    templateName = Header
+}
+
+tt_content.modul_trennlinie <  tt_content.modul_text
+tt_content.modul_trennlinie {
+    templateName = Trennlinie
+}
+tt_content.modul_galerieslider  <  tt_content.modul_text
+tt_content.modul_galerieslider {
+    templateName = GalerieSlider
+    dataProcessing.10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+    dataProcessing.10 {
+        if.isTrue.field = tx_modul_bild
+        references {
+            fieldName = tx_modul_bild
+            table = tt_content
+        }
+        as = data_tx_modul_bild
+    }
+}
+tt_content.modul_galeriekarussell  <  tt_content.modul_text
+tt_content.modul_galeriekarussell {
+    templateName = GalerieKarussell
+    dataProcessing.10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+    dataProcessing.10 {
+        if.isTrue.field = tx_modul_bild
+        references {
+            fieldName = tx_modul_bild
+            table = tt_content
+        }
+        as = data_tx_modul_bild
+    }
+}
+tt_content.modul_topslider  <  tt_content.modul_text
+tt_content.modul_topslider {
+    templateName = TopSlider
+    dataProcessing.10 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+    dataProcessing.10 {
+        if.isTrue.field = tx_modul_slides
+        table = tx_modul_slides
+        pidInList.field = pid
+        where = parentid=###uid### AND deleted=0 AND hidden=0
+        orderBy = sorting
+        markers.uid.field = uid
+        as = data_tx_modul_slides
+    }
+    dataProcessing.10 {
+    dataProcessing.10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+        dataProcessing.10 {
+            if.isTrue.field = tx_modul_media
+            references {
+                fieldName = tx_modul_media
+                table = tx_modul_slides
+            }
+            as = data_tx_modul_media
+        }
+    }
+}
+
+tt_content.modul_accordion  <  tt_content.modul_text
+tt_content.modul_accordion {
+    templateName = Accordion
+    dataProcessing.10 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+    dataProcessing.10 {
+        if.isTrue.field = tx_modul_accordions
+        table = tx_modul_accordions
+        pidInList.field = pid
+        where = parentid=###uid### AND deleted=0 AND hidden=0
+        orderBy = sorting
+        markers.uid.field = uid
+        as = data_tx_modul_accordions
+    }
+
+}

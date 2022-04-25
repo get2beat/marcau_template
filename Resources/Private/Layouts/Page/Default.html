@@ -1,0 +1,20 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:marcau="http://typo3.org/ns/Marcau/T3template/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:spaceless>
+    <div class="Sticky m-header {settings.page.header-background} ">
+        <f:switch expression="{settings.page.layout}">
+            <f:case value="0"><f:render partial="Structure/HeaderNormal" arguments="{_all}"/></f:case>
+            <f:case value="1"><f:render partial="Structure/HeaderCenter" arguments="{_all}"/></f:case>
+            <f:defaultCase><f:render partial="Structure/HeaderNormal" arguments="{_all}"/></f:defaultCase>
+        </f:switch>
+    </div>
+    <div id="m-content">
+        <main>
+            <f:render section="Main" />
+        </main>
+        <div class="{settings.page.footer-background}">
+            <f:render partial="Structure/FooterContent" arguments="{_all}"/>
+        </div>
+    </div>
+</f:spaceless>
+
+</html>

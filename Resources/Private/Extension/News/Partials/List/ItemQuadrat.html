@@ -1,0 +1,66 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div class="m-news-item-qaudrat has-hover w-full md:w-1/2 xl:w-1/3 p-8 pb-6 md:p-0 md:pb-6 xl:mb-12 revealelem">
+    <f:if condition="{newsItem.type} != 3">
+        <f:then>
+            <n:link newsItem="{newsItem}" settings="{settings}" class="relative block h-full" title="{newsItem.title}">
+                <div class="relative box-content aspect-w-1 aspect-h-1 mx-1 {f:if(condition: '{iterator.cycle} % 3', then:'xl:mr-6', else:'xl:mr-0')} {f:if(condition: '{iterator.cycle} % 2', then:'md:mr-8', else:'md:mr-0')}">
+                    <f:if condition="{newsItem.falMedia}">
+                        <picture class="{settings.page.animation.news}">
+                            <source data-variant="default" data-maxwidth="640" media="(min-width: 1300px)"
+                                    srcset="{f:uri.image(image: newsItem.falMedia.0, maxWidth: '800',cropVariant:'desktop')}">
+                            <source data-variant="small" data-maxwidth="256"
+                                    srcset="{f:uri.image(image: newsItem.falMedia.0, maxWidth: '400',cropVariant:'mobile')}">
+                            <img class="object-cover h-full w-full" src="{f:uri.image(image: newsItem.falMedia.0, cropVariant: 'liste')}"
+                                 title="{newsItem.title}" alt="{newsItem.title}">
+                        </picture>
+                    </f:if>
+                    <div class="hidden xl:block m-hover p-4 absolute h-full w-full top-0 left-0 bg-black bg-opacity-60 text-white ">
+                        <div class="flex h-full inline-block">
+                            <div class="m-auto w-full text-center">
+                                <h2 class="">{newsItem.title}</h2>
+                                <div class="" itemprop="description">{newsItem.teaser -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.html()}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-news-teaser-mobile xl:hidden m-auto w-full text-center mt-4">
+                    <h2 class="text-black">{newsItem.title}</h2>
+                    <div class="text-black" itemprop="description">{newsItem.teaser -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.html()}</div>
+                </div>
+            </n:link>
+        </f:then>
+        <f:else>
+            <div class="relative box-content aspect-w-1 aspect-h-1 mx-1 {f:if(condition: '{iterator.cycle} % 3', then:'xl:mr-6', else:'xl:mr-0')} {f:if(condition: '{iterator.cycle} % 2', then:'md:mr-8', else:'md:mr-0')}">
+                <f:if condition="{newsItem.falMedia}">
+                    <picture class="{settings.page.animation.news}">
+                        <source data-variant="default" data-maxwidth="640" media="(min-width: 1300px)"
+                                srcset="{f:uri.image(image: newsItem.falMedia.0, maxWidth: '800',cropVariant:'desktop')}">
+                        <source data-variant="small" data-maxwidth="256"
+                                srcset="{f:uri.image(image: newsItem.falMedia.0, maxWidth: '400',cropVariant:'mobile')}">
+                        <img class="object-cover h-full w-full" src="{f:uri.image(image: newsItem.falMedia.0, cropVariant: 'liste')}"
+                             title="{newsItem.title}" alt="{newsItem.title}">
+                    </picture>
+                </f:if>
+                <div class="hidden xl:block m-hover p-4 absolute h-full w-full top-0 left-0 bg-black bg-opacity-60 text-white ">
+                    <div class="flex h-full inline-block">
+                        <div class="m-auto w-full text-center">
+                            <h2 class="">{newsItem.title}</h2>
+                            <div class="" itemprop="description">{newsItem.teaser -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.html()}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-news-teaser-mobile xl:hidden m-auto w-full text-center mt-4">
+                <h2 class="text-black">{newsItem.title}</h2>
+                <div class="text-black" itemprop="description">{newsItem.teaser -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.html()}</div>
+            </div>
+        </f:else>
+    </f:if>
+
+</div>
+
+
+

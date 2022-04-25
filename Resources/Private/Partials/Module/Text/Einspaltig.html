@@ -1,0 +1,33 @@
+<f:spaceless>
+    <section id="c{data.uid}" class="m-modul-text {data.tx_modul_backgroundcolor}">
+        <div class="m-layout mx-auto lg:flex lg:justify-center revealelem">
+            <div class="{f:if(condition: '{data.colPos} == \'0\'', then:'lg:w-4/6')}">
+                <f:if condition="{data.tx_modul_showtitle}">
+                    <f:if condition="{data.tx_modul_h1}">
+                        <f:then>
+                            <h1 class="{data.tx_modul_textposition} p-0">
+                                <f:format.html parseFuncTSPath="lib.parseFunc">{data.header}</f:format.html>
+                            </h1>
+                        </f:then>
+                        <f:else>
+                            <h2 class="{data.tx_modul_textposition} p-0">
+                                <f:format.html parseFuncTSPath="lib.parseFunc">{data.header}</f:format.html>
+                            </h2>
+                        </f:else>
+                    </f:if>
+                </f:if>
+                <div class="m-text {data.tx_modul_textposition}">
+                    <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.bodytext}</f:format.html>
+                    <f:if condition="{data.tx_modul_link}">
+                        <f:link.typolink parameter="{data.tx_modul_link}">
+                            <button class="{f:if(condition: '{data.tx_modul_backgroundcolor} == \'color-dunkel\'', then:'m-button-inverted button-border-inverted ', else:'m-button button-border')} {settings.page.button}">
+                                <f:if condition="{data.tx_modul_link_title}"><f:then>{data.tx_modul_link_title}</f:then><f:else>mehr</f:else></f:if>
+                            </button>
+                        </f:link.typolink>
+                    </f:if>
+                </div>
+            </div>
+        </div>
+    </section>
+</f:spaceless>
+

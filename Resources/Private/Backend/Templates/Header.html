@@ -1,0 +1,15 @@
+<section  class="m-modul-header" >
+    <div class="m-text container mx-auto">
+        <div class="p-6 xl:px-0 xl:w-4/6">
+            <f:if condition="{row.tx_modul_h1} == '1'">
+                <f:then>
+                    <h1 class="{row.tx_modul_textposition} text-5xl text-red-500"><f:format.html parseFuncTSPath="lib.parseFunc_RTE">{processedRow.header} (H1)</f:format.html></h1>
+                </f:then>
+                <f:else>
+                    <h2 class="{row.tx_modul_textposition} text-4xl "><f:format.html parseFuncTSPath="lib.parseFunc_RTE">{processedRow.header}</f:format.html></h2>
+                </f:else>
+            </f:if>
+       </div>
+    </div>
+</section>
+

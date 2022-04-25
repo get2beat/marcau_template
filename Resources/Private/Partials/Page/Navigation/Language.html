@@ -1,0 +1,26 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{settings.language.enable}">
+    <span class="m-nav-language xl:block absolute xl:static xl:flex xl:pt-6 top-auto xl:top-auto text-center xl:text-left left-0 right-0 h-auto scale-0 xl:scale-100 opacity-0 xl:opacity-100 pointer-events-none xl:pointer-events-auto">
+        <f:variable name="languagenavigationItemsAvailableCount" value="0" />
+        <f:if condition="{languagenavigation}">
+            <f:for each="{languagenavigation}" as="item" iteration="iter">
+                <f:if condition="{item.available}">
+                    <f:variable name="languagenavigationItemsAvailableCount" value="{languagenavigationItemsAvailableCount + 1}" />
+                </f:if>
+            </f:for>
+        </f:if>
+        <f:if condition="{languagenavigation} && ({languagenavigationItemsAvailableCount} > 1)">
+            <f:for each="{languagenavigation}" as="item" iteration="iter" >
+                <f:if condition="{item.available}">
+                        <a href="{item.link}" class=" {f:if(condition: item.active, then: 'font-bold', else: 'hover:text-opacity-80')}" hreflang="{item.hreflang}" title="{item.title}">
+                    <span class="m-menu__item-link m-menu__item-link--language m-menu__item-link--language__fontNormal mt-8 xl:mt-0 px-2 relative">{item.navigationTitle}</span>
+                </a>
+                <f:if condition="!{iter.isLast}">
+                    <span class="m-menu__item border-r-2 h-6 mt-1 {f:if(condition: '{settings.page.header-background} == \'color-dunkel\'', then:'border-white', else:'border-black')}"></span>
+                </f:if>
+                </f:if>
+            </f:for>
+        </f:if>
+    </span>
+</f:if>
+</html>

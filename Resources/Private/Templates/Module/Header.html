@@ -1,0 +1,16 @@
+<section id="c{data.uid}" class="m-modul-header {data.tx_modul_backgroundcolor} revealelem">
+    <div class="m-layout mx-auto ">
+        <f:if condition="{data.tx_modul_h1}">
+            <f:then>
+                <h1 class="{data.tx_modul_textposition} py-8 xl:px-0">
+                    <f:format.html parseFuncTSPath="lib.parseFunc">{data.header}</f:format.html>
+                </h1>
+            </f:then>
+            <f:else>
+                <h2 class="{data.tx_modul_textposition} py-8 xl:px-0">
+                    <f:format.html parseFuncTSPath="lib.parseFunc">{data.header}</f:format.html>
+                </h2>
+            </f:else>
+        </f:if>
+    </div>
+</section>

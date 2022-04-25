@@ -1,0 +1,17 @@
+<h2 class="text-4xl">TopSlider</h2>
+<div class="mb-6 mx-auto flex justify-center ">
+    <f:for each="{processedRow.tx_modul_slides}" as="slide">
+        <div>
+            <f:image class="p-2 w-full" src="{slide.tx_modul_media.0.uid}" treatIdAsReference="1" width="180" cropVariant="desktop" />
+            <f:if condition="{slide.tx_modul_h1}">
+                <f:then>
+                    <h1 class="{row.tx_modul_textposition} text-xl text-red-500">{slide.tx_modul_titel } (H1)</h1>
+                </f:then>
+                <f:else>
+                    <h2 class="{row.tx_modul_textposition} text-xl ">{slide.tx_modul_titel }</h2>
+                </f:else>
+            </f:if>
+        </div>
+
+    </f:for>
+</div>

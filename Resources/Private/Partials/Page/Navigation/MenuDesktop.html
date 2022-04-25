@@ -1,0 +1,29 @@
+
+<div id="menu-desktop" class="sticky top-0">
+    <nav class="m-mainnav flex justify-between items-end xl:items-start">
+        <ul class="hidden xl:block absolute xl:static xl:flex xl:pt-6 top-auto xl:top-auto text-center xl:text-left left-0 right-0 h-auto scale-0 xl:scale-100 opacity-0 xl:opacity-100 pointer-events-none xl:pointer-events-auto" id="menu">
+            <f:for each="{mainnavigation}" as="mainnavigationItem">
+                <li class="m-mainnav__item mt-8 xl:mt-0 xl:pr-6 relative">
+                    <f:if condition="{mainnavigationItem.active}">
+                        <f:then>
+                            <a class="m-menu__item-link active block pb-1 xl:ml-5 {f:if(condition: mainnavigationItem.children, then:'has-children')} border-b-2  {f:if(condition: '{settings.page.header-background} == \'color-dunkel\'', then:'border-white', else:'border-black')}" href="{mainnavigationItem.link}" target="{mainnavigationItem.target}" title="{mainnavigationItem.title}">{mainnavigationItem.title}</a>
+                        </f:then>
+                        <f:else>
+                            <a class="m-menu__item-link block pb-1 xl:ml-5 {f:if(condition: mainnavigationItem.children, then:' has-children')} border-transparent border-b-2 {f:if(condition: '{settings.page.header-background} == \'color-dunkel\'', then:'hover:border-white', else:'hover:border-black')}" href="{mainnavigationItem.link}" target="{mainnavigationItem.target}" title="{mainnavigationItem.title}">{mainnavigationItem.title}</a>
+                        </f:else>
+                    </f:if>
+                    <f:if condition="{mainnavigationItem.children})">
+                        <ul class="m-submenu {f:if(condition: '{settings.page.header-background} == \'color-dunkel\'', then:'color-dunkel', else:'bg-white')} m-mainnav__submenu xl:opacity-0 xl:pointer-events-none w-max">
+                            <f:for each="{mainnavigationItem.children}" as="mainnavigationSubItemLvl1" iteration="iter-submenu" >
+                                <li>
+                                    <a class="block py-3 mx-7 {f:if(condition: iter-submenu.isLast, then:'pb-8')} {f:if(condition: mainnavigationSubItemLvl1.active, then:'text-color-mittel')}" href="{mainnavigationSubItemLvl1.link}" target="{mainnavigationSubItemLvl1.target}" title="{mainnavigationSubItemLvl1.title}">{mainnavigationSubItemLvl1.title}</a>
+                                </li>
+                            </f:for>
+                        </ul>
+                    </f:if>
+                </li>
+            </f:for>
+        </ul>
+    </nav>
+</div>
+

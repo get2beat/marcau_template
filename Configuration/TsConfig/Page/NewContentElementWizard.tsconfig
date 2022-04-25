@@ -1,0 +1,69 @@
+mod.wizards.newContentElement.wizardItems.common {
+    elements {
+            text {
+                iconIdentifier = tx_modul_text
+                title = Text  (Titel und Text)
+                description = (OPTIONEN: Titel anzeigen, Text zentriert/Links, Backgroundcolor, Link (Button))
+                tt_content_defValues {
+                    CType = modul_text
+                }
+            }
+            header {
+                iconIdentifier = tx_modul_header
+                title = Überschrift
+                description = (OPTIONEN: Überschrift als H1 markieren (Nur einmal pro Seite!))
+                tt_content_defValues {
+                    CType = modul_header
+                }
+            }
+            bildtext {
+                iconIdentifier = tx_modul_bildtext
+                title = Bild/Text  (Titel und Text)
+                description = (OPTIONEN: Video/Audio, Titel anzeigen, Bild Links/Rechts, Bildgrösse, Backgroundcolor, Link (Button))
+                tt_content_defValues {
+                    CType = modul_bildtext
+                }
+            }
+            trennlinie {
+                iconIdentifier = tx_modul_trennlinie
+                title = Trennlinie
+                description = (OPTIONEN: Backgroundcolor)
+                tt_content_defValues {
+                    CType = modul_trennlinie
+                }
+            }
+            galerieslider {
+                iconIdentifier = tx_modul_galerieslider
+                title = Galerie Slider
+                description = (OPTIONEN: Titel anzeigen)
+                tt_content_defValues {
+                    CType = modul_galerieslider
+                }
+            }
+            galeriekarussell {
+                iconIdentifier = tx_modul_galeriekarussell
+                title = Galerie Karussell
+                description = (OPTIONEN: Titel anzeigen)
+                tt_content_defValues {
+                    CType = modul_galeriekarussell
+                }
+            }
+            topslider {
+                iconIdentifier = tx_modul_topslider
+                title = Top Slider
+                description = (OPTIONEN: Titel anzeigen, Link (Button))
+                tt_content_defValues {
+                    CType = modul_topslider
+                }
+            }
+            modul_accordion {
+                iconIdentifier = tx_modul_accordion
+                title = Akkordion
+                description = Textinhalte
+                tt_content_defValues {
+                    CType = modul_accordion
+                }
+            }
+    }
+    show := addToList(text,header,bildtext,galerieslider,galeriekarussell,trennlinie,topslider,modul_accordion)
+}

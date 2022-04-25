@@ -1,0 +1,9 @@
+<svg version="1.1" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+ <g transform="matrix(1 0 0 1.5 53.102 -3.5847)">
+  <rect x="-53.102" y="2.3898" width="600" height="400" fill="#111b2b"/>
+ </g>
+ <g transform="translate(53.102 197.61)">
+  <text x="-25.215483" y="239.42264" fill="#ffffff" font-family="sans-serif" font-size="211.65px" letter-spacing="0px" stroke-width="5.2912" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="-25.215483" y="239.42264" font-family="Montserrat" font-size="541.06px" stroke-width="5.2912">T<tspan font-size="401.33px">S</tspan></tspan></text>
+  <path d="m-3.3877 352.25h509.14" fill="#d71c1c" stroke="#fff" stroke-width="15.7"/>
+ </g>
+</svg>

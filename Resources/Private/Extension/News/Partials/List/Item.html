@@ -1,0 +1,26 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div class="object-cover m-news-itemquer w-full pb-4 sm:w-1/2 px-6 xl:px-12 mb-5 mt-5 xl:my-12 m-box revealelem">
+    <n:link newsItem="{newsItem}" settings="{settings}" class="relative block" title="{newsItem.title}">
+        <div class="border border-gray shadow-sm hover:shadow-lg">
+            <div class="xl:relative xl:pb-3/5 overflow-hidden">
+                <f:if condition="{newsItem.falMedia}">
+                    <picture>
+                        <source data-variant="default" data-maxwidth="640" media="(min-width: 1500px)" srcset="{f:uri.image(image: newsItem.falMedia.0, maxWidth: '800',cropVariant:'liste')}">
+                        <source data-variant="small" data-maxwidth="256" srcset="{f:uri.image(image: newsItem.falMedia.0, maxWidth: '400',cropVariant:'liste')}">
+                        <img class="md:h-full md:w-full md:object-cover" src="{f:uri.image(image: newsItem.falMedia.0, cropVariant: 'liste')}" title="{newsItem.title}" alt="{newsItem.title}">
+                    </picture>
+                </f:if>
+            </div>
+            <div class="m-text py-4 text-center bg-white">
+                <h3 class="mb-2 px-8 xl:h-20">{newsItem.title}</h3>
+                <div class="m-teaser px-4 xl:h-36">
+                    <div itemprop="description">{newsItem.teaser -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.html()}</div>
+                </div>
+            </div>
+        </div>
+    </n:link>
+</div>
+

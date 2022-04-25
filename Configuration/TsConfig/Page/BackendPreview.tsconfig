@@ -1,0 +1,3 @@
+mod.web_layout.tt_content.preview.modul.templateRootPath = EXT:marcau_template/Resources/Private/Backend/Templates/
+mod.web_layout.tt_content.preview.modul.layoutRootPath = EXT:marcau_template/Resources/Private/Backend/Layout/
+mod.web_layout.tt_content.preview.modul.partialRootPath = EXT:marcau_template/Resources/Private/Backend/Partials/

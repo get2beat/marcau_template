@@ -1,0 +1,267 @@
+######################
+#### DEPENDENCIES ####
+######################
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:fluid_styled_content/Configuration/TypoScript/constants.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:marcau_template/Configuration/TypoScript/Module/constants.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:marcau_template/Configuration/TypoScript/News/constants.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:marcau_template/Configuration/TypoScript/Recaptcha/constants.typoscript">
+
+
+##############################
+#### FLUID STYLED CONTENT ####
+##############################
+styles {
+    templates {
+        layoutRootPath = EXT:marcau_template/Resources/Private/Layouts/ContentElements/
+        partialRootPath = EXT:marcau_template/Resources/Private/Partials/ContentElements/
+        templateRootPath = EXT:marcau_template/Resources/Private/Templates/ContentElements/
+    }
+}
+
+
+############
+### PAGE ###
+############
+page {
+     fluidtemplate {
+        layoutRootPath = EXT:marcau_template/Resources/Private/Layouts/Page/
+        partialRootPath = EXT:marcau_template/Resources/Private/Partials/Page/
+        templateRootPath = EXT:marcau_template/Resources/Private/Templates/Page/
+    }
+    meta {
+        description =
+        author =
+        keywords =
+        viewport = width=device-width, initial-scale=1
+        apple-mobile-web-app-capable = no
+        compatible = IE=edge
+    }
+    tracking {
+        google {
+            trackingID =
+            anonymizeIp = 1
+        }
+    }
+}
+
+##############
+### CONFIG ###
+##############
+config {
+    no_cache = 0
+    removeDefaultJS = 0
+    admPanel = 1
+    prefixLocalAnchors = all
+    headerComment = build by marcau.ch
+    sendCacheHeaders = 1
+}
+
+
+#############################
+### CONFIG COOKIE CONSENT ###
+#############################
+
+# 15 = Datenschutz ID
+plugin.tx_cookieconsent.settings.url = 15
+plugin.tx_cookieconsent.settings.dismissOnScroll = 0
+# Type (info, opt-out)
+plugin.tx_cookieconsent.settings.type = info
+plugin.tx_cookieconsent.settings.revokable = false
+
+plugin.tx_cookieconsent.settings.palette.popup.background = #0A283E
+plugin.tx_cookieconsent.settings.palette.popup.text = #FFF
+plugin.tx_cookieconsent.settings.palette.button.background = #C31E36
+plugin.tx_cookieconsent.settings.palette.button.text = #FFF
+
+#############################
+### CONFIG TEMPLATE ###
+#############################
+
+settings {
+        # cat=marcautemplate: Conf/100/100; type=string; label=Root Page Id: (Weltkugel)
+        rootPageId = 1
+        # cat=marcautemplate: Conf/100/110; type=options[DEV=0, LIVE=1]; label=Robots / Live: (DEV):noindex,nofollow (LIVE):index,follow
+        robots =
+
+    page {
+        # cat=marcautemplate: page/180/100; type=options[Standard=0, Zentriert=1, Vollbild=2, Hintergrundfläche=3]; label=Layout
+        layout = 0
+        # cat=marcautemplate: page/180/101; type=string; label=Grundfarbe Dunkel: Bsp. 46, 46, 46
+        color-dunkel = 46, 46, 46
+        # cat=marcautemplate: page/180/102; type=string; label=Grundfarbe Mittel: Bsp. 168, 168, 168
+        color-mittel = 168, 168, 168
+        # cat=marcautemplate: page/180/103; type=string; label=Grundfarbe Hell: Bsp. 245, 245, 245
+        color-hell = 245, 245, 245
+        # cat=marcautemplate: page/180/104; type=options[0=0, 0.1=0.1, 0.2=0.2, 0.3=0.3, 0.4=0.4,1 inverted=1 ]; label=Button Transparenz von der Grundfarbe Dunkel
+        button-transparenz = 0
+        # cat=marcautemplate: page/180/120; type=options[Eckig=, Abgerundet=rounded, Pille=rounded-full]; label=Button
+        button = Source Sans Pro
+        # cat=marcautemplate: page/180/130; type=options[weiss=bg-white, hell=color-hell, dunkel=color-dunkel]; label=Header Background: Dunkel = logo-inverted
+        header-background = weiss
+        # cat=marcautemplate: page/180/131; type=string; label=Header Höhe: Wird für Mobile mmenu gebraucht in px (.mm-menu {height: calc( 100% - XXX ))
+        headerheight = 88px
+        # cat=marcautemplate: page/180/160; type=string; label=Trennlinie: Pfad zum Trennlinie (in der Dateiliste vom Kunde)
+        linebreak = /fileadmin/user_upload/[startup.marcau.ch]/config/Trennlinie.svg
+        # cat=marcautemplate: page/180/161; type=string; label=Trennlinie: Pfad zum Trennlinie (in der Dateiliste vom Kunde)
+        linebreak-inverted = /fileadmin/user_upload/[startup.marcau.ch]/config/Trennlinie-inverted.svg
+        # cat=marcautemplate: page/180/180; type=string; label=Footernavigation: ID der Footernavigation
+        footer-pid = pid der Footernavigation
+        # cat=marcautemplate: page/180/181; type=options[weiss=bg-white, hell=color-hell, dunkel=color-dunkel]; label=Footer: Background
+        footer-background = weiss
+    }
+    fontstyle {
+        # cat=marcautemplate: fontstyle/300/1_enable; type=options[normal=0, Grossbuchstaben=1]; label= Navigation: Schrift Grossbuchstaben
+        nav.uppercase = 0
+        # cat=marcautemplate: fontstyle/301/1_enable; type=options[Schwarz=0, Dunkel=1]; label= Navigation Farbe : Schriftfarbe
+        nav.color = 0
+        # cat=marcautemplate: fontstyle/311/1_enable; type=options[normal=none, Grossbuchstaben=1]; label= H1,H2 : Schrift Grossbuchstaben
+        h1.uppercase = 0
+        # cat=marcautemplate: fontstyle/312/1_enable; type=options[Schwarz=0, Dunkel=1]; label= H1,H2 Farbe : Schriftfarbe
+        h1.color = 0
+        # cat=marcautemplate: fontstyle/321/1_enable; type=options[normal=none, Grossbuchstaben=1]; label= Button: Schrift Grossbuchstaben
+        button.uppercase = 0
+    }
+    animation {
+        # cat=marcautemplate: animation/400/1_enable; type=options[Keine=, Fade=animatefade, Zoom=animatezoom, RotateX=animaterotatex, RotateY=animaterotatey]; label= Animation Modul: Bild/Text
+        bildtext =
+        # cat=marcautemplate: animation/410/1_enable; type=options[Keine=, Fade=newsanimatefade,Zoom=newsanimatezoom, RotateX=newsanimaterotatex, RotateY=newsanimaterotatey]; label= Animation News: Bilder
+        news =
+    }
+    module {
+        news {
+            # cat=marcautemplate: module_news/200/news_enable; type=boolean; label=News: aktivieren
+            enable = 1
+            # cat=marcautemplate: module_news/210/news_pid; type=string; label=News Daten: Ordner ID der Newsdaten
+            pid = 41
+            # cat=marcautemplate: module_news/210/newsdetail_pid; type=string; label=News: ID der NewsDetail Seite
+            newsdetail_pid = 51
+        }
+        imagegrid {
+            # cat=marcautemplate: module_imagegrid/200/news_enable; type=boolean; label=Bilder Grid: aktivieren
+            enable = 1
+        }
+    }
+    logo {
+        # cat=marcautemplate: logo/110/100; type=string; label=Logo: Pfad zum Logo (in der Dateiliste vom Kunde)
+        file = /fileadmin/user_upload/[startup.marcau.ch]/config/logo-marcau.svg
+        # cat=marcautemplate: logo/110/100; type=string; label=Logo-inverted: Pfad zum Logo (in der Dateiliste vom Kunde)
+        file-inverted = /fileadmin/user_upload/[startup.marcau.ch]/config/logo-marcau-inverted.svg
+        # cat=marcautemplate: logo/110/130; type=string; label=CSS: (h-1 bis h-12) h-14 h-16 h-20 h-24 h-28
+        css = h-12 xl:h-24
+        # cat=marcautemplate: logo/110/150; type=string; label=Link Titel
+        linktitle = Marcau AG
+        # cat=marcautemplate: logo/110/151; type=boolean; label=Logo im Footer anzeigen
+        logofooter = 1
+    }
+
+    favicon {
+        # cat=marcautemplate: logo/110/160; type=string; label=Favicon: Pfad zum Favicon (in der Dateiliste vom Kunde)
+        file = /fileadmin/user_upload/[startup.marcau.ch]/config/favicon.png
+    }
+
+    language {
+        # cat=marcautemplate: language/168/language_enable; type=boolean; label=LanguageSection: Show Language Navigation
+        enable = 1
+        # cat=marcautemplate: language/168/language_languageValue; type=string; label=Language Navigation Values: Comma separated list of language uids or set to 'auto' to load all enabled system languages
+        languageValue = 0,1
+    }
+    font {
+        # cat=marcautemplate: font-family font/161/2_font; type=string; label=Font-Family Bsp. azo-sans-web
+        family = Source Sans Pro
+    }
+    googleFont {
+        # cat=marcautemplate: google font/161/1_enable; type=boolean; label=Enable
+        enable = 1
+        # cat=marcautemplate: google font/161/2_font; type=options[Lora=Lora, Merriweather=Merriweather, Montserrat=Montserrat, Nunito=Nunito, Raleway=Raleway, Roboto=Roboto, Source Sans Pro=Source Sans Pro, Quattrocento=Quattrocento, Ubuntu=Ubuntu]; label=Font
+        font = Source Sans Pro
+        # cat=marcautemplate: google font/161/3_weight; type=string; label=Font Weights: Comma separated list of font weights
+        weight = 300,400,700
+    }
+    adobeFont {
+        # cat=marcautemplate: adobe font/171/1_enable; type=boolean; label=Enable
+        enable = 1
+        # cat=marcautemplate: adobe font/171/2_font; ; type=string; label=Font
+        font = Source Sans Pro
+        # cat=marcautemplate: adobe font/171/3_weight; type=string; label=Font Weights: Comma separated list of font weights
+        weight = 300,400,700
+    }
+    breadcrumb {
+        # cat=marcautemplate: navigation/162/breadcrumb_enable; type=boolean; label=Breadcrumb: Enable to display the breadcrumb
+        enable = 1
+    }
+    socialmedia {
+                # cat=marcautemplate: social media/165/00_enable; type=boolean; label=Social Media: Enable to display the social media links
+                enable = 1
+                channels {
+                    facebook {
+                        label = Facebook
+                        # cat=marcautemplate: social media/165/01_facebook_url; type=string; label=Facebook: Insert the full account url
+                        url =
+                    }
+                    twitter {
+                        label = Twitter
+                        # cat=marcautemplate: social media/165/02_twitter_url; type=string; label=Twitter: Insert the full account url
+                        url =
+                    }
+                    instagram {
+                        label = Instagram
+                        # cat=marcautemplate: social media/165/03_instagram_url; type=string; label=Instagram: Insert the full account url
+                        url =
+                    }
+                    github {
+                        label = GitHub
+                        # cat=marcautemplate: social media/165/04_googleplus_url; type=string; label=GitHub: Insert the full account url
+                        url =
+                    }
+                    googleplus {
+                        label = Google+
+                        # cat=marcautemplate: social media/165/04_googleplus_url; type=string; label=Google+: Insert the full account url
+                        url =
+                    }
+                    linkedin {
+                        label = LinkedIn
+                        # cat=marcautemplate: social media/165/05_linkedin_url; type=string; label=LinkedIn: Insert the full account url
+                        url =
+                    }
+                    xing {
+                        label = Xing
+                        # cat=marcautemplate: social media/165/06_xing_url; type=string; label=Xing: Insert the full account url
+                        url =
+                    }
+                    youtube {
+                        label = YouTube
+                        # cat=marcautemplate: social media/165/07_youtube_url; type=string; label=YouTube: Insert the full account url
+                        url =
+                    }
+                    vk {
+                        label = VK
+                        # cat=marcautemplate: social media/165/08_vk_url; type=string; label=VK: Insert the full account url
+                        url =
+                    }
+                    vimeo {
+                        label = Vimeo
+                        # cat=marcautemplate: social media/165/09_vimeo_url; type=string; label=Vimeo: Insert the full account url
+                        url =
+                    }
+                    rss {
+                        label = RSS
+                        # cat=marcautemplate: social media/165/10_rss_url; type=string; label=RSS: Insert the full url
+                        url =
+                    }
+                }
+            }
+        copyright {
+            # cat=marcautemplate: copyright/169/120; type=boolean; label=Copyright: Enable to display the copyright
+            enable = 1
+            # cat=marcautemplate: copyright/169/121; type=string; label=Copyright Text
+            text = Running with <a href="http://www.typo3.org" rel="noopener" target="_blank">TYPO3</a> and <a href="https://www.bootstrap-package.com" rel="noopener" target="_blank">marcautemplate</a>.
+        }
+        tracking {
+            google {
+                # cat=marcautemplate: tracking/180/100/1_enable; type=boolean; label=Enable
+                enable =
+                # cat=marcautemplate: tracking/180/110; type=string; label=Google Analytics: Tracking-ID (G-XXXXXXXX)
+                trackingID =
+            }
+        }
+}

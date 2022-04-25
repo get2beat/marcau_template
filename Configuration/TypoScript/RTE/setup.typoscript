@@ -1,0 +1,23 @@
+### Set default class for ul from rte
+
+### list with tailwind classes
+lib.parseFunc_RTE {
+    externalBlocks := addToList(ul)
+    externalBlocks {
+        ul.stripNL = 1
+        ul.callRecursive = 1
+        ul.callRecursive.tagStdWrap.HTMLparser = 1
+        ul.callRecursive.tagStdWrap.HTMLparser.tags.ul {
+            fixAttrib.class.default = list-disc text-xl pl-5
+        }
+    }
+    externalBlocks := addToList(ol)
+    externalBlocks {
+        ol.stripNL = 1
+        ol.callRecursive = 1
+        ol.callRecursive.tagStdWrap.HTMLparser = 1
+        ol.callRecursive.tagStdWrap.HTMLparser.tags.ol {
+            fixAttrib.class.default = list-decimal text-xl pl-5
+        }
+    }
+}

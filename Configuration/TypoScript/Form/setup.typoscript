@@ -1,0 +1,19 @@
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:form/Configuration/TypoScript/setup.typoscript">
+
+plugin.tx_form {
+	mvc {
+		callDefaultActionIfActionCantBeResolved = 1
+	}
+	settings {
+		yamlConfigurations {
+			100 = EXT:marcau_template/Configuration/Yaml/FormSetup.yaml
+		}
+	}
+}
+module.tx_form {
+	settings {
+		yamlConfigurations {
+			100 = EXT:marcau_template/Configuration/Yaml/FormSetup.yaml
+		}
+	}
+}

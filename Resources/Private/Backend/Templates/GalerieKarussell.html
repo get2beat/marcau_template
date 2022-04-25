@@ -1,0 +1,15 @@
+<f:if condition="{row.tx_modul_showtitle}">
+    <f:if condition="{row.tx_modul_h1} == '1'">
+        <f:then>
+            <h1 class="text-5xl text-red-500"><f:format.html parseFuncTSPath="lib.parseFunc_RTE">{processedRow.header} (H1)</f:format.html></h1>
+        </f:then>
+        <f:else>
+            <h2 class="text-4xl "><f:format.html parseFuncTSPath="lib.parseFunc_RTE">{processedRow.header}</f:format.html></h2>
+        </f:else>
+    </f:if>
+</f:if>
+<div class="mb-6 mx-auto flex justify-center" style="{f:if(condition: '{row.tx_modul_backgroundcolor} == \'color-dunkel\'', then:'color:white; background-color: #111b2b;')}">
+    <f:for each="{processedRow.tx_modul_bild}" as="slide">
+        <f:image class="p-2" src="{slide.uid}" treatIdAsReference="1" width="180" />
+    </f:for>
+</div>

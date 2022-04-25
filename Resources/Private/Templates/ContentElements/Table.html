@@ -1,0 +1,36 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Main">
+
+    <f:if condition="{table}">
+        <section class="m-table">
+            <div class="overflow-x-auto m-layout mx-auto flex flex-wrap">
+                <table>
+                    <f:for each="{table}" as="row" iteration="rowIterator">
+                        <f:if condition="{rowIterator.isFirst}">
+                            <thead>
+                        </f:if>
+                        <tr>
+                            <f:for each="{row}" as="cell" iteration="columnIterator">
+                                <f:render partial="Table/Columns" arguments="{_all}" />
+                            </f:for>
+                        </tr>
+                        <f:if condition="{rowIterator.isFirst}">
+                            <f:then>
+                                </thead>
+                                <tbody>
+                            </f:then>
+                            <f:else>
+                                <f:if condition="{rowIterator.isLast}">
+                                    </tbody>
+                                </f:if>
+                            </f:else>
+                        </f:if>
+                    </f:for>
+                </table>
+            </div>
+        </section>
+    </f:if>
+
+</f:section>
+</html>

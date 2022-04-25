@@ -1,0 +1,60 @@
+
+##########################
+#### tx_seo           ####
+##########################
+
+
+# URL : {domain}/?type=1533906435
+
+plugin.tx_seo {
+  config {
+    xmlSitemap {
+      sitemaps {
+        pages {
+          config {
+			# Folder 254, Recycler 255, Menu Separator 199, BE User Settings 6
+            excludedDoktypes = 254, 255, 199, 6
+            additionalWhere = AND (no_index = 0 OR no_follow = 0)
+          }
+        }
+
+        tx_news {
+          provider = TYPO3\CMS\Seo\XmlSitemap\RecordsXmlSitemapDataProvider
+          config {
+              table = tx_news_domain_model_news
+              sortField = sorting
+              lastModifiedField = tstamp
+              # news data
+              pid = {$settings.module.news.pid}
+              recursive = 2
+              url {
+                  # news detailpid
+                  pageId = {$settings.module.news.newsdetail_pid}
+                  fieldToParameterMap {
+                      uid = tx_news_pi1[news]
+                  }
+                  additionalGetParameters {
+                      tx_news_pi1.controller = News
+                      tx_news_pi1.action = detail
+                  }
+                  useCacheHash = 1
+              }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+# Robots: allow indexing of news records, but set ‘noindex’ to the detail page
+[traverse(request.getQueryParams(), 'tx_news_pi1/news') > 0]
+    page.meta {
+                description >
+                author >
+                keywords >
+                robots = index,follow
+                robots.replace = 1
+            }
+    }
+[global]

@@ -1,0 +1,16 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<article class="m-modul-accordeon border-b border-mittel pb-3">
+    <div class="m-modul-accordeon-header flex justify-between items-center cursor-pointer select-none">
+        <h3 class="">{newsItem.title}</h3>
+        <div class="m-icon mt-6 w-7 h-7 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><defs></defs><path class="m-icon-plus" d="M-704.408,3.774h-7.85v-7.85a1.075,1.075,0,0,0-1.075-1.075,1.075,1.075,0,0,0-1.075,1.075v7.85h-7.85a1.075,1.075,0,0,0-1.075,1.075,1.075,1.075,0,0,0,1.075,1.075h7.85v7.85a1.075,1.075,0,0,0,1.075,1.075,1.075,1.075,0,0,0,1.075-1.075V5.924h7.85a1.075,1.075,0,0,0,1.075-1.075A1.075,1.075,0,0,0-704.408,3.774Z" transform="translate(14.849 723.333) rotate(90)"/></svg>
+        </div>
+    </div>
+    <div class="m-content">
+        <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{newsItem.teaser}</f:format.html>
+    </div>
+</article>
+

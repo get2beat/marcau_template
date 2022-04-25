@@ -1,0 +1,28 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{theme.breadcrumb.enable}">
+    <f:if condition="{breadcrumb}">
+        <nav class="p-1 w-full ">
+            <ol class="list-reset flex text-grey-dark">
+                <f:for each="{breadcrumb}" as="breadcrumbItem" iteration="iter">
+                    <li class="m-breadcrumbs__item ">
+                        <f:if condition="{iter.isLast}">
+                            <f:then>
+                                {breadcrumbItem.title}
+                            </f:then>
+                            <f:else>
+                                <a href="{breadcrumbItem.link}" {f:if(condition:footernavigationItem.target, then: ' target="{breadcrumbItem.target}"')} title="{breadcrumbItem.title}">
+                                {breadcrumbItem.title}
+                                </a>
+                            </f:else>
+                        </f:if>
+                    </li>
+                    <f:if condition="!{iter.isLast}">
+                        <li><span class="mx-2">/</span></li>
+                    </f:if>
+                </f:for>
+
+            </ol>
+        </nav>
+    </f:if>
+</f:if>
+</html>

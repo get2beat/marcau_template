@@ -1,0 +1,60 @@
+<section  class="m-modul-text py-6" style=" {f:if(condition: '{row.tx_modul_backgroundcolor} == \'color-dunkel\'', then:'color:white; background-color: #111b2b;')}" >
+    <div class="m-text container mx-auto flex justify-center ">
+        <f:if condition="{row.tx_modul_spalten} == '1'">
+            <f:then>
+                <f:if condition="{row.colPos} == '3'">
+                    <f:then>
+                        <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{processedRow.header}</f:format.html>
+                    </f:then>
+                    <f:else>
+                        <div class="{row.tx_modul_backgroundcolor} {f:if(condition: '{row.colPos} == \'0\'', then:'xl:w-4/6')}">
+                            <f:if condition="{processedRow.tx_modul_showtitle}">
+                                <f:if condition="{row.tx_modul_h1} == '1'">
+                                    <f:then>
+                                        <h1 class="{row.tx_modul_textposition} text-5xl text-red-500"><f:format.html parseFuncTSPath="lib.parseFunc_RTE">{processedRow.header} (H1)</f:format.html></h1>
+                                    </f:then>
+                                    <f:else>
+                                        <h2 class="{row.tx_modul_textposition} text-4xl "><f:format.html parseFuncTSPath="lib.parseFunc_RTE">{processedRow.header}</f:format.html></h2>
+                                    </f:else>
+                                </f:if>
+                            </f:if>
+                            <f:if condition="{processedRow.bodytext}">
+                                <div class="{row.tx_modul_textposition}">
+                                    <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{processedRow.bodytext}</f:format.html>
+                                    <f:if condition="{processedRow.tx_modul_link}">
+                                            <div class="my-6 p-2 w-24 border border-black">
+                                                <f:if condition="{processedRow.tx_modul_link_title}">
+                                                    <f:then>
+                                                        {processedRow.tx_modul_link_title}
+                                                    </f:then>
+                                                    <f:else>
+                                                        mehr
+                                                    </f:else>
+                                                </f:if>
+                                            </div>
+                                    </f:if>
+                                </div>
+                            </f:if>
+                        </div>
+                    </f:else>
+                </f:if>
+            </f:then>
+            <f:else>
+                <div class="m-text m-layout mx-auto flex flex-wrap">
+                    <f:if condition="{processedRow.bodytext}">
+                        <div class="w-full sm:w-1/2 xl:pl-48 xl:pr-24">
+                            <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{processedRow.bodytext}</f:format.html>
+                        </div>
+                    </f:if>
+                    <f:if condition="{processedRow.tx_modul_textspalterechts}">
+                        <div class="w-full sm:w-1/2 xl:pl-12 xl:pr-6">
+                            <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{processedRow.tx_modul_textspalterechts}</f:format.html>
+                        </div>
+                    </f:if>
+                </div>
+            </f:else>
+        </f:if>
+
+    </div>
+</section>
+

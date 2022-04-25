@@ -1,0 +1,27 @@
+<f:if condition="{media.originalFile.properties.type}} == 3">
+        <figure class="audio pb-6">
+            <f:if condition="{media.title}">
+                <h3 class="pt-6">
+                    {media.title -> f:format.nl2br()}
+                </h3>
+            </f:if>
+            <div class="audio-embed py-3 xl:py-6">
+                <f:media class="audio-embed-item w-full" file="{media}"  alt="{mediaalternative}" title="{media.title}"/>
+            </div>
+            <f:if condition="{media.description}">
+                <figcaption class="audio-caption">
+                    {media.description -> f:format.nl2br()}
+                </figcaption>
+            </f:if>
+        </figure>
+</f:if>
+<f:if condition="{media.originalFile.properties.type}} == 4">
+    <figure class="video">
+        <div class="video-embed aspect-w-16 aspect-h-9" >
+            <f:media class="video-embed-item" file="{media}" alt="{media.alternative}"
+                     title="{media.title}" additionalConfig="{autoplay: '0'}" />
+        </div>
+    </figure>
+</f:if>
+
+

@@ -1,0 +1,29 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:marcau="http://typo3.org/ns/Marcau/MarcauTemplate/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:switch expression="{data.tx_modul_topslider_config}">
+    <f:case value="0">
+        <div class="w-full mx-auto">
+            <f:render partial="Bild/TopSlider" arguments="{_all}"/>
+        </div>
+    </f:case>
+    <f:case value="1">
+        <div class="m-layout">
+            <f:render partial="Bild/TopSlider" arguments="{_all}"/>
+        </div>
+    </f:case>
+    <f:case value="2">
+        <div class="m-layout-3 m-layout-3--bg-gradient">
+            <f:render partial="Bild/TopSlider" arguments="{_all}"/>
+        </div>
+    </f:case>
+    <f:case value="3">
+        <div class="color-dunkel py-12">
+            <div class="m-layout ">
+                <f:render partial="Bild/TopSlider" arguments="{_all}"/>
+            </div>
+        </div>
+    </f:case>
+    <f:defaultCase><f:render partial="Structure/HeaderNormal" arguments="{_all}"/></f:defaultCase>
+</f:switch>
+

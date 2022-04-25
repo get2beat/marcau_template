@@ -1,0 +1,35 @@
+<f:if condition="{data_tx_modul_accordions}">
+    <section id="c{accordion_item.data.uid}" class="m-modul-text p-6 xl:p-12 pb-12 {data.tx_modul_backgroundcolor} revealelem">
+        <div class="m-layout mx-auto flex justify-center">
+            <div class="w-full xl:w-4/6">
+                <f:for each="{data_tx_modul_accordions}" as="accordion_item">
+                    <article class="m-modul-accordeon border-b border-mittel pb-4">
+                        <div class="m-modul-accordeon-header flex justify-between items-center cursor-pointer select-none">
+                            <h3 class="">{accordion_item.data.tx_modul_titel}</h3>
+                            <div class="m-icon mt-4 w-8 h-8 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 20 20"><defs></defs><path class="m-icon-plus" d="M-704.408,3.774h-7.85v-7.85a1.075,1.075,0,0,0-1.075-1.075,1.075,1.075,0,0,0-1.075,1.075v7.85h-7.85a1.075,1.075,0,0,0-1.075,1.075,1.075,1.075,0,0,0,1.075,1.075h7.85v7.85a1.075,1.075,0,0,0,1.075,1.075,1.075,1.075,0,0,0,1.075-1.075V5.924h7.85a1.075,1.075,0,0,0,1.075-1.075A1.075,1.075,0,0,0-704.408,3.774Z" transform="translate(14.849 723.333) rotate(90)"/></svg>
+                            </div>
+                        </div>
+                        <div class="m-content">
+                            <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{accordion_item.data.tx_modul_text}</f:format.html>
+                            <f:if condition="{accordion_item.data.tx_modul_link}">
+                                <f:link.typolink parameter="{accordion_item.data.tx_modul_link}">
+                                    <button class="{f:if(condition: '{data.tx_modul_backgroundcolor} == \'color-dunkel\'', then:'m-button-inverted button-border-inverted ', else:'m-button button-border')} font-semibold my-6 py-2 px-4 border  hover:border-transparent {settings.page.button}">
+                                        <f:if condition="{accordion_item.data.tx_modul_link_title}">
+                                            <f:then>
+                                                {accordion_item.data.tx_modul_link_title}
+                                            </f:then>
+                                            <f:else>
+                                                mehr
+                                            </f:else>
+                                        </f:if>
+                                    </button>
+                                </f:link.typolink>
+                            </f:if>
+                        </div>
+                    </article>
+                </f:for>
+            </div>
+        </div>
+    </section>
+</f:if>

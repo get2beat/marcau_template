@@ -1,0 +1,19 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:marcau="http://typo3.org/ns/Marcau/T3template/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<header class="flex justify-between items-center">
+
+    <f:render partial="Structure/Logo" arguments="{_all}"/>
+    <div class="hidden xl:flex">
+        <f:render partial="Navigation/MenuDesktop" arguments="{_all}"/>
+        <f:render partial="Navigation/Language" arguments="{_all}"/>
+        <f:render partial="Navigation/SocialIcons" arguments="{_all}"/>
+    </div>
+
+
+    <f:render partial="Navigation/MenuMobile" arguments="{_all}"/>
+
+
+</header>
+
+
+</html>

@@ -1,0 +1,60 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+      xmlns:rx="http://typo3.org/ns/Reelworx/RxShariff/ViewHelper"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Detail" />
+
+<f:section name="content">
+    <f:if condition="{newsItem}">
+        <f:then>
+            <n:format.nothing>
+                <n:excludeDisplayedNews newsItem="{newsItem}" />
+                <f:if condition="{settings.detail.showMetaTags}">
+                    <f:render partial="Detail/Opengraph" arguments="{newsItem: newsItem, settings:settings}" />
+                </f:if>
+                <f:if condition="{newsItem.alternativeTitle}">
+                    <f:then>
+                        <n:titleTag>
+                            <f:format.htmlentitiesDecode>{newsItem.alternativeTitle}</f:format.htmlentitiesDecode>
+                        </n:titleTag>
+                    </f:then>
+                    <f:else>
+                        <n:titleTag>
+                            <f:format.htmlentitiesDecode>{newsItem.title}</f:format.htmlentitiesDecode>
+                        </n:titleTag>
+                    </f:else>
+                </f:if>
+            </n:format.nothing>
+            <f:if condition="{newsItem.contentElements}">
+                <!-- content elements -->
+                <f:cObject typoscriptObjectPath="lib.tx_news.contentElementRendering">{newsItem.contentElementIdList}</f:cObject>
+            </f:if>
+            <!-- back button -->
+            <f:if condition="{settings.backPid}">
+                <f:then>
+                    <div class="m-button-wrap m-layout flex justify-center mb-24">
+                        <f:link.typolink parameter="{settings.backPid}" >
+                            <button class="{f:if(condition: '{row.tx_modul_backgroundcolor} == \'color-dunkel\'', then:'m-button-inverted button-border-inverted ', else:'m-button button-border')} {settings.page.button}">
+                                Zurück
+                            </button>
+                        </f:link.typolink>
+                    </div>
+                </f:then>
+                <f:else>
+                    <div class="m-button-wrap m-layout flex justify-center mb-24">
+                        <a href="javascript:history.back()">
+                            <button class="{f:if(condition: '{row.tx_modul_backgroundcolor} == \'color-dunkel\'', then:'m-button-inverted button-border-inverted ', else:'m-button button-border')} {settings.page.button}">
+                                Zurück
+                            </button>
+                        </a>
+                    </div>
+                </f:else>
+            </f:if>
+        </f:then>
+        <f:else>
+
+        </f:else>
+    </f:if>
+</f:section>
+</html>

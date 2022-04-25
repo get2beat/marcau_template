@@ -1,0 +1,35 @@
+plugin.tx_news {
+
+  rss.channel {
+    title = {$config.standards.sitename}
+    description =
+    link = {$config.standards.base_url}
+    language = de-CH
+    copyright = {$config.standards.sitename}
+    category =
+    generator = TYPO3 EXT:news
+  }
+
+  opengraph {
+    site_name = {$config.standards.sitename}
+
+    twitter {
+      card = summary
+      site =
+      creator =
+    }
+  }
+
+  view {
+    templateRootPath    = EXT:marcau_template/Resources/Private/Extension/News/Templates/
+    partialRootPath     = EXT:marcau_template/Resources/Private/Extension/News/Partials/
+    layoutRootPath      = EXT:marcau_template/Resources/Private/Extension/News/Layouts/
+  }
+
+  settings {
+    # cat=plugin.tx_news/file; type=string; label=Path to CSS file
+    #cssFile = EXT:news/Resources/Public/Css/news-basic.css
+    cssFile =
+  }
+
+}

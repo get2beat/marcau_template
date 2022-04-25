@@ -1,0 +1,55 @@
+###################
+### CONFIG NEWS ###
+###################
+plugin.tx_news.settings {
+
+    page.button = {$settings.page.button}
+    page.animation.news = {$settings.animation.news}
+
+    displayDummyIfNoMedia = 0
+    list {
+        # media configuration
+        media {
+            image {
+                maxWidth = 600
+                maxHeight = 400
+            }
+        }
+        # Paginate configuration.
+        paginate {
+            itemsPerPage = 3
+            insertAbove = 0
+            insertBelow = 1
+            templatePath =
+            prevNextHeaderTags = 1
+            maximumNumberOfLinks = 3
+        }
+     }
+     detail {
+         # media configuration
+         media {
+             image {
+                 maxWidth = 1600
+                 maxHeight =
+             }
+         }
+     }
+
+}
+
+config.recordLinks {
+    tx_news {
+        typolink {
+            parameter = {$settings.module.news.newsdetail_pid}
+            additionalParams.data = field:uid
+            additionalParams.wrap = &tx_news_pi1[controller]=News&tx_news_pi1[action]=detail&tx_news_pi1[news]=|
+            useCacheHash = 1
+            ATagParams.data = parameters:allParams
+            target.data = parameters:target
+            title.data = parameters:title
+            extTarget = _blank
+            extTarget.override.data = parameters:target
+        }
+        forceLink = 1
+    }
+}

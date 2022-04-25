@@ -1,0 +1,27 @@
+{row.tx_modul_backgroundcolor}
+<section class="m-modul-trennlinie {row.tx_modul_backgroundcolor} py-6" style=" {f:if(condition: '{row.tx_modul_backgroundcolor} == \'color-dunkel\'', then:'color:white; background-color: #111b2b;')}"
+    <div class="m-linebreak m-layout mx-auto flex justify-center">
+        <f:if condition="{row.tx_modul_select_trennlinie} == 2">
+            <f:then>
+                <div class="w-full xl:w-3/6">
+                    <f:if condition="{row.tx_modul_backgroundcolor} == 'color-dunkel'">
+                        <f:then>
+                            TRENNLINIE als Logo<hr />
+                        </f:then>
+                        <f:else>
+                            TRENNLINIE als Logo<hr />
+                        </f:else>
+                    </f:if>
+                </div>
+            </f:then>
+            <f:else>
+                <div class="w-full py-6 xl:py-12">
+                    <div class="border-b border-black">
+                        TRENNLINIE Einfach
+                    </div>
+                </div>
+            </f:else>
+        </f:if>
+    </div>
+</section>
+

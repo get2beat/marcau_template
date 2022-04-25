@@ -1,0 +1,132 @@
+<section id="c{data.uid}" class="m-modul-bildtext {data.tx_modul_backgroundcolor} revealelem">
+        <f:if condition="{data.tx_modul_bildposition} == 1">
+            <f:then>
+                <div class="m-layout mx-auto flex flex-wrap">
+                    <div class="m-modul-bildtext-left w-full {f:if(condition: '{data.tx_modul_bilddimension} == \'gross\'', then:'sm:w-1/2 lg:w-3/5', else:'sm:w-1/2 lg:w-2/5')}">
+                        <div class="">
+                            <f:if condition="{data_tx_modul_bild}">
+                                <f:if condition="{data_tx_modul_bild.0.originalFile.properties.type} == 2">
+                                    <f:then>
+                                        <div class="w-full {settings.page.animation.bildtext}">
+                                            <picture>
+                                                <source data-variant="default" data-maxwidth="640" media="(min-width: 1300px)" srcset="{f:uri.image(image: data_tx_modul_bild.0, maxWidth: '800',cropVariant:'default')}">
+                                                <source data-variant="small" data-maxwidth="256" srcset="{f:uri.image(image: data_tx_modul_bild.0, maxWidth: '400',cropVariant:'default')}">
+                                                <img class="mx-auto" src="{f:uri.image(image: data_tx_modul_bild.0, cropVariant: 'default')}" title="{data_tx_modul_bild.0.title}" alt="{data_tx_modul_bild.0.title}">
+                                            </picture>
+                                        </div>
+                                        <f:if condition="{data_tx_modul_bild.0.description}">
+                                            <div class="text-sm">{data_tx_modul_bild.0.description}</div>
+                                        </f:if>
+                                    </f:then>
+                                    <f:else>
+                                        <f:render partial="AudioVideo" arguments="{media: data_tx_modul_bild.0}"/>
+                                    </f:else>
+                                </f:if>
+                            </f:if>
+                        </div>
+                    </div>
+                    <div class="w-full {f:if(condition: '{data.tx_modul_bilddimension} == \'gross\'', then:'sm:w-1/2 lg:w-2/5', else:'sm:w-1/2 lg:w-3/5')} ">
+                        <div class="flex h-full px-0 md:pl-8 {f:if(condition: '{data.tx_modul_bilddimension} == \'gross\'', then:'xl:pl-36', else:'xl:pl-48 xl:pr-24')}">
+                            <div class="m-auto w-full">
+                                <f:if condition="{data.tx_modul_showtitle}">
+                                    <f:if condition="{data.tx_modul_h1}">
+                                        <f:then>
+                                            <h1 class="pt-8 sm:p-0">
+                                                <f:format.html parseFuncTSPath="lib.parseFunc">{data.header}</f:format.html>
+                                            </h1>
+                                        </f:then>
+                                        <f:else>
+                                            <h2 class="pt-6 sm:p-0">
+                                                <f:format.html parseFuncTSPath="lib.parseFunc">{data.header}</f:format.html>
+                                            </h2>
+                                        </f:else>
+                                    </f:if>
+                                </f:if>
+                                <div class="m-text">
+                                    <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.bodytext}</f:format.html>
+                                        <f:if condition="{data.tx_modul_link}">
+                                            <f:link.typolink parameter="{data.tx_modul_link}">
+                                                <button class="{f:if(condition: '{data.tx_modul_backgroundcolor} == \'color-dunkel\'', then:'m-button-inverted button-border-inverted ', else:'m-button button-border')} {settings.page.button}">
+                                                    <f:if condition="{data.tx_modul_link_title}">
+                                                        <f:then>
+                                                            {data.tx_modul_link_title}
+                                                        </f:then>
+                                                        <f:else>
+                                                            mehr
+                                                        </f:else>
+                                                    </f:if>
+                                                </button>
+                                            </f:link.typolink>
+                                        </f:if>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </f:then>
+            <f:else>
+                <div class="m-layout mx-auto flex flex-wrap-reverse sm:flex-wrap">
+                    <div class="m-modul-bildtext-right {f:if(condition: '{data.tx_modul_bilddimension} == \'gross\'', then:'sm:w-1/2 lg:w-2/5', else:'sm:w-1/2 lg:w-3/5')} pr-8 sm:pr-0">
+                        <div class="flex h-full px-0 md:pr-8 {f:if(condition: '{data.tx_modul_bilddimension} == \'gross\'', then:'xl:pr-12', else:'xl:pl-48 xl:pr-24')}">
+                            <div class="m-auto w-full">
+                                <f:if condition="{data.tx_modul_showtitle}">
+                                    <f:if condition="{data.tx_modul_h1}">
+                                        <f:then>
+                                            <h1 class="pt-8 sm:p-0">
+                                                <f:format.html parseFuncTSPath="lib.parseFunc">{data.header}</f:format.html>
+                                            </h1>
+                                        </f:then>
+                                        <f:else>
+                                            <h2 class="pt-6 sm:p-0">
+                                                <f:format.html parseFuncTSPath="lib.parseFunc">{data.header}</f:format.html>
+                                            </h2>
+                                        </f:else>
+                                    </f:if>
+                                </f:if>
+                                <div class="m-text">
+                                    <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.bodytext}</f:format.html>
+                                    <f:if condition="{data.tx_modul_link}">
+                                        <f:link.typolink parameter="{data.tx_modul_link}">
+                                            <button class="{f:if(condition: '{data.tx_modul_backgroundcolor} == \'color-dunkel\'', then:'m-button-inverted button-border-inverted ', else:'m-button button-border')} my-9 {settings.page.button}">
+                                                <f:if condition="{data.tx_modul_link_title}">
+                                                    <f:then>
+                                                        {data.tx_modul_link_title}
+                                                    </f:then>
+                                                    <f:else>
+                                                        mehr
+                                                    </f:else>
+                                                </f:if>
+                                            </button>
+                                        </f:link.typolink>
+                                    </f:if>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full {f:if(condition: '{data.tx_modul_bilddimension} == \'gross\'', then:'sm:w-1/2 lg:w-3/5', else:'sm:w-1/2 lg:w-2/5')}">
+                        <div class="p-0">
+                            <f:if condition="{data_tx_modul_bild}">
+                                <f:if condition="{data_tx_modul_bild.0.originalFile.properties.type} == 2">
+                                    <f:then>
+                                        <div class="w-full {settings.page.animation.bildtext}">
+                                            <picture>
+                                                <source data-variant="default" data-maxwidth="640" media="(min-width: 1300px)" srcset="{f:uri.image(image: data_tx_modul_bild.0, maxWidth: '800',cropVariant:'default')}">
+                                                <source data-variant="small" data-maxwidth="256" srcset="{f:uri.image(image: data_tx_modul_bild.0, maxWidth: '400',cropVariant:'default')}">
+                                                <img class="mx-auto" src="{f:uri.image(image: data_tx_modul_bild.0, cropVariant: 'default')}" title="{data_tx_modul_bild.0.title}" alt="{data_tx_modul_bild.0.title}">
+                                            </picture>
+                                        </div>
+                                        <f:if condition="{data_tx_modul_bild.0.description}">
+                                            <div class="text-sm">{data_tx_modul_bild.0.description}</div>
+                                        </f:if>
+                                    </f:then>
+                                    <f:else>
+                                        <f:render partial="AudioVideo" arguments="{media: data_tx_modul_bild.0}"/>
+                                    </f:else>
+                                </f:if>
+                            </f:if>
+                        </div>
+                    </div>
+                </div>
+            </f:else>
+        </f:if>
+</section>

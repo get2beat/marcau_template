@@ -1,0 +1,18 @@
+<f:if condition="{processedRow.tx_modul_accordions}">
+    <section id="c{accordion_item.data.uid}" class="m-modul-text py-6" style=" {f:if(condition: '{row.tx_modul_backgroundcolor} == \'color-dunkel\'', then:'color:white; background-color: #111b2b;')}">
+        <div class="m-text m-layout mx-auto flex justify-center">
+            <div class="xl:w-4/6">
+                <f:for each="{processedRow.tx_modul_accordions}" as="accordion_item">
+                    <article class="m-modul-accordeon border-b border-mittel pb-3">
+                        <header class="flex justify-between items-center cursor-pointer select-none">
+                            <h2 class="">{accordion_item.tx_modul_titel}</h2>
+                            <div class="m-icon mt-6 w-7 h-7 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><defs></defs><path class="m-icon-plus" d="M-704.408,3.774h-7.85v-7.85a1.075,1.075,0,0,0-1.075-1.075,1.075,1.075,0,0,0-1.075,1.075v7.85h-7.85a1.075,1.075,0,0,0-1.075,1.075,1.075,1.075,0,0,0,1.075,1.075h7.85v7.85a1.075,1.075,0,0,0,1.075,1.075,1.075,1.075,0,0,0,1.075-1.075V5.924h7.85a1.075,1.075,0,0,0,1.075-1.075A1.075,1.075,0,0,0-704.408,3.774Z" transform="translate(14.849 723.333) rotate(90)"/></svg>
+                            </div>
+                        </header>
+                    </article>
+                </f:for>
+            </div>
+        </div>
+    </section>
+</f:if>

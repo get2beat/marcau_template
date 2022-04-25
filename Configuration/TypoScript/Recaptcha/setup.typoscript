@@ -1,0 +1,6 @@
+# add settings for EXT:form
+plugin.tx_form.settings.yamlConfigurations.1974 =
+plugin.tx_form.settings.yamlConfigurations.1974 = EXT:marcau_template/Configuration/Yaml/RecaptchaBaseSetup.yaml
+plugin.tx_form.view.partialRootPaths.1974 =
+plugin.tx_form.view.partialRootPaths.1974 = EXT:marcau_template/Resources/Private/Extension/Forms/Frontend/Partials/
+

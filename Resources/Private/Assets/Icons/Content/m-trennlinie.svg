@@ -1,0 +1,9 @@
+<svg version="1.1" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+ <g transform="matrix(1 0 0 1.5 53.102 -3.5847)">
+  <rect x="-53.102" y="2.3898" width="600" height="400" fill="#111b2b"/>
+ </g>
+ <g transform="translate(53.102 197.61)">
+  <path d="m-3.3877 352.25h509.14" fill="#d71c1c" stroke="#fff" stroke-width="15.7"/>
+ </g>
+ <path d="m49.429 281.14h509.14" fill="#d71c1c" stroke="#fff" stroke-width="15.7"/>
+</svg>

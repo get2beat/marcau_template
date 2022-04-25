@@ -1,0 +1,8 @@
+# cat=marcau_module/file; type=string; label=Path to template root (FE)
+plugin.tx_marcautemplate.view.templateRootPath =
+
+# cat=marcau_module/file; type=string; label=Path to template partials (FE)
+plugin.tx_marcautemplate.view.partialRootPath =
+
+# cat=marcau_module/file; type=string; label=Path to template layouts (FE)
+plugin.tx_marcautemplate.view.layoutRootPath =

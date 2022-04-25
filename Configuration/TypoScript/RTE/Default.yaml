@@ -1,0 +1,25 @@
+imports:
+    - { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml" }
+    - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
+    - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml" }
+editor:
+    config:
+        contentsCss: "EXT:marcau_template/Resources/Public/Css/rte.css"
+
+        toolbarGroups:
+            - { name: styles, groups: [ format ] }
+            - { name: basicstyles, groups: [ basicstyles ] }
+            - { name: paragraph, groups: [ list] }
+            - { name: links, groups: [ links ] }
+            - { name: document, groups: [ mode ] }
+
+        format_tags: "p;h2;h3"
+
+        removeButtons:
+            - Anchor
+            - Styles
+            - Superscript
+            - Subscript
+            - Underline
+            - Strike
+            - Table

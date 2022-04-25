@@ -1,0 +1,50 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:marcau="http://typo3.org/ns/Marcau/MarcauTemplate/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<section id="c{data.uid}" class="m-modul-galeriekarussell {data.tx_modul_backgroundcolor} p-6 xl:p-12 revealelem">
+    <f:if condition="{data.tx_modul_showtitle}">
+        <f:if condition="{data.tx_modul_h1}">
+            <f:then>
+                <h1 class="{data.tx_modul_textposition} m-layout py-8">
+                    <f:format.html parseFuncTSPath="lib.parseFunc">{data.header}</f:format.html>
+                </h1>
+            </f:then>
+            <f:else>
+                <h2 class="{data.tx_modul_textposition} m-layout py-6">
+                    <f:format.html parseFuncTSPath="lib.parseFunc">{data.header}</f:format.html>
+                </h2>
+            </f:else>
+        </f:if>
+    </f:if>
+    <div class="m-layout swiper-container swiper-container__karussell">
+        <div class="swiper-wrapper">
+            <f:for each="{data_tx_modul_bild}" as="slide">
+                <div class="m-slide swiper-slide">
+                    <f:if condition="{slide}">
+                        <f:then>
+                            <f:variable name="sliderImg">{slide}</f:variable>
+                            <picture>
+                                <source data-variant="2xl" data-maxwidth="1600" media="(min-width: 1536px)"
+                                        srcset="{f:uri.image(image: sliderImg, maxWidth: '1700',cropVariant:'desktopmobile')}">
+                                <source data-variant="xl" data-maxwidth="1300" media="(min-width: 1280px)"
+                                        srcset="{f:uri.image(image: sliderImg, maxWidth: '1400',cropVariant:'desktopmobile')}">
+                                <source data-variant="lg" data-maxwidth="1100" media="(min-width: 1024px)"
+                                        srcset="{f:uri.image(image: sliderImg, maxWidth: '1100',cropVariant:'desktopmobile')}">
+                                <source data-variant="md" data-maxwidth="800" media="(min-width: 768px)"
+                                        srcset="{f:uri.image(image: sliderImg, maxWidth: '800',cropVariant:'desktopmobile')}">
+                                <source data-variant="sm" data-maxwidth="640"
+                                        srcset="{f:uri.image(image: sliderImg, maxWidth: '500',cropVariant:'desktopmobile')}">
+                                <img class="m-slide__media m-darken m-darken__active"
+                                     src="{f:uri.image(image: sliderImg, cropVariant: 'header')}"
+                                     title="{sliderImg.title}" alt="{sliderImg.title}">
+                            </picture>
+                        </f:then>
+                    </f:if>
+                </div>
+            </f:for>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</section>
+

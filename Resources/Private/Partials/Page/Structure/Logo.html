@@ -1,0 +1,10 @@
+<f:link.page pageUid="{settings.rootPageId}" >
+    <f:if condition="{settings.page.header-background} == 'color-dunkel'">
+        <f:then>
+            <f:image class="w-auto {settings.logo.css}" src="{settings.logo.file-inverted}" alt="{settings.logo.linktitle}" title="{settings.logo.linktitle}"/>
+        </f:then>
+        <f:else>
+            <f:image class="w-auto {settings.logo.css}" src="{settings.logo.file}" alt="{settings.logo.linktitle}" title="{settings.logo.linktitle}"/>
+        </f:else>
+    </f:if>
+</f:link.page>

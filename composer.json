@@ -1,0 +1,22 @@
+{
+  "name": "marcau/marcau-template",
+  "type": "typo3-cms-extension",
+  "description": "Configuration for Marcau typo3 template",
+  "homepage": "http://typo3.marcau.ch/",
+  "license": [
+    "GPL-2.0-or-later"
+  ],
+  "keywords": [
+    "TYPO3 CMS"
+  ],
+  "require": {
+    "typo3/cms-core": "^10.2",
+    "typo3/cms-rte-ckeditor": "^10.2",
+    "typo3/cms-fluid-styled-content": "^10.2"
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "marcau_template"
+    }
+  }
+}

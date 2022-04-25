@@ -1,0 +1,502 @@
+######################
+#### DEPENDENCIES ####
+######################
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:fluid_styled_content/Configuration/TypoScript/setup.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:marcau_template/Configuration/TypoScript/Form/setup.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:marcau_template/Configuration/TypoScript/News/setup.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:marcau_template/Configuration/TypoScript/Module/setup.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:marcau_template/Configuration/TypoScript/RTE/setup.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:marcau_template/Configuration/TypoScript/Recaptcha/setup.typoscript">
+
+
+################
+#### HELPER ####
+################
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:marcau_template/Configuration/TypoScript/Helper/DynamicContent.typoscript">
+
+################
+#### SEO    ####
+################
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:marcau_template/Configuration/TypoScript/Seo/setup.typoscript">
+
+
+##############
+#### PAGE ####
+##############
+page = PAGE
+page {
+    typeNum = 0
+    shortcutIcon = {$settings.favicon.file}
+
+    10 = FLUIDTEMPLATE
+    10 {
+        # Template names will be generated automatically by converting the applied
+        # backend_layout, there is no explicit mapping necessary anymore.
+        #
+        # BackendLayout Key
+        # subnavigation_right_2_columns -> SubnavigationRight2Columns.html
+        #
+        # Backend Record
+        # uid: 1 -> 1.html
+        #
+        # Database Entry
+        # value: -1 -> None.html
+        # value: pagets__subnavigation_right_2_columns -> SubnavigationRight2Columns.html
+        templateName = TEXT
+        templateName {
+            cObject = TEXT
+            cObject {
+                data = pagelayout
+                required = 1
+                case = uppercamelcase
+                split {
+                    token = pagets__
+                    cObjNum = 1
+                    1.current = 1
+                }
+            }
+            ifEmpty = Default
+        }
+        templateRootPaths {
+            0 = EXT:marcau_template/Resources/Private/Templates/Page/
+            1 = {$page.fluidtemplate.templateRootPath}
+        }
+        partialRootPaths {
+            0 = EXT:marcau_template/Resources/Private/Partials/Page/
+            1 = {$page.fluidtemplate.partialRootPath}
+        }
+        layoutRootPaths {
+            0 = EXT:marcau_template/Resources/Private/Layouts/Page/
+            1 = {$page.fluidtemplate.layoutRootPath}
+        }
+        dataProcessing {
+            10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+            10 {
+                references.fieldName = media
+            }
+            20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            20 {
+                levels = 4
+                includeSpacer = 0
+                as = mainnavigation
+            }
+            40 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            40 {
+                special = directory
+                special.value = {$settings.page.footer-pid}
+                as = footernavigation
+            }
+            50 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            50 {
+                special = rootline
+                special.range = 1|-1
+                includeNotInMenu = 1
+                as = breadcrumb
+            }
+            60 = TYPO3\CMS\Frontend\DataProcessing\LanguageMenuProcessor
+            60 {
+                languages = auto
+                as = languagenavigation
+            }
+        }
+        ################
+        ### SETTINGS ###
+        ################
+        settings {
+            rootPageId = {$settings.rootPageId}
+            robots = {$settings.robots}
+            page {
+                layout = {$settings.page.layout}
+                color-dunkel = {$settings.page.color-dunkel}
+                color-mittel = {$settings.page.color-mittel}
+                color-hell = {$settings.page.color-hell}
+                button-transparenz = {$settings.page.button-transparenz}
+                button = {$settings.page.button}
+                header-background = {$settings.page.header-background}
+                footer-background = {$settings.page.footer-background}
+                linebreak = {$settings.page.linebreak}
+                linebreak-inverted = {$settings.page.linebreak-inverted}
+                headerheight = {$settings.page.headerheight}
+            }
+            logo {
+                file = {$settings.logo.file}
+                file-inverted = {$settings.logo.file-inverted}
+                css = {$settings.logo.css}
+                linktitle = {$settings.logo.linktitle}
+                logofooter = {$settings.logo.logofooter}
+            }
+            googleFont {
+                font = {$settings.googleFont.font}
+            }
+            language {
+                enable = {$settings.language.enable}
+                languageValue = {$settings.language.languageValue}
+            }
+            font {
+                family = {$settings.font.family}
+            }
+            socialmedia {
+                enable = {$settings.socialmedia.enable}
+                channels {
+                    facebook {
+                        url = {$settings.socialmedia.channels.facebook.url}
+                    }
+                    twitter {
+                        url = {$settings.socialmedia.channels.twitter.url}
+                    }
+                    instagram {
+                        url = {$settings.socialmedia.channels.instagram.url}
+                    }
+                    github {
+                        url = {$settings.socialmedia.channels.github.url}
+                    }
+                    googleplus {
+                        url = {$settings.socialmedia.channels.googleplus.url}
+                    }
+                    linkedin {
+                        url = {$settings.socialmedia.channels.linkedin.url}
+                    }
+                    youtube {
+                        url = {$settings.socialmedia.channels.youtube.url}
+                    }
+                    vk {
+                        url = {$settings.socialmedia.channels.vk.url}
+                    }
+                    vimeo {
+                        url = {$settings.socialmedia.channels.vimeo.url}
+                    }
+                    rss {
+                        url = {$settings.socialmedia.channels.rss.url}
+                    }
+                }
+            }
+        }
+    }
+
+    meta {
+        viewport = {$page.meta.viewport}
+        robots = noindex,nofollow
+        apple-mobile-web-app-capable = {$page.meta.apple-mobile-web-app-capable}
+        author = {$page.meta.author}
+        author {
+            override.field = author
+        }
+        keywords = {$page.meta.keywords}
+        keywords {
+            override.field = keywords
+        }
+        X-UA-Compatible = {$page.meta.compatible}
+        X-UA-Compatible {
+            attribute = http-equiv
+        }
+
+        # OpenGraph Tags
+        og:title = TEXT
+        og:title.data = DB:pages:{$settings.rootPageId}:seo_title
+        og:title.override {
+          required = 1
+          data = field:seo_title
+        }
+        og:site_name {
+            attribute = property
+            data = TSFE:tmpl|setup|sitetitle
+        }
+        description = TEXT
+        description.data = DB:pages:{$settings.rootPageId}:description
+        description.override {
+          required = 1
+          data = field:description
+        }
+        og:description = TEXT
+        og:description.data = DB:pages:{$settings.rootPageId}:description
+        og:description.override {
+          required = 1
+          data = field:description
+        }
+        og:image {
+            attribute = property
+            stdWrap.cObject = FILES
+            stdWrap.cObject {
+                references {
+                    data = levelfield:-1, media, slide
+                }
+                maxItems = 1
+                renderObj = COA
+                renderObj {
+                    10 = IMG_RESOURCE
+                    10 {
+                        file {
+                            import.data = file:current:uid
+                            treatIdAsReference = 1
+                            width = 1280c
+                            height = 720c
+                        }
+                        stdWrap {
+                            typolink {
+                                parameter.data = TSFE:lastImgResourceInfo|3
+                                returnLast = url
+                                forceAbsoluteUrl = 1
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    includeCSSLibs {
+            googlewebfont = https://fonts.googleapis.com/css?family={$settings.googleFont.font}:{$settings.googleFont.weight}
+            googlewebfont {
+                external = 1
+                disableCompression = 1
+                excludeFromConcatenation = 1
+                fontLoader {
+                    families {
+                        0 = {$settings.googleFont.font}:{$settings.googleFont.weight}
+                    }
+                    enabled = 1
+                }
+                if {
+                    isTrue = {$settings.googleFont.enable}
+                }
+            }
+    }
+
+    includeCSS {
+        marcautemplate_tailwind = EXT:marcau_template/Resources/Public/Css/tailwind.css
+        marcautemplate_main = EXT:marcau_template/Resources/Public/Css/main.css
+    }
+
+    includeJSLibs {
+
+    }
+
+    includeJS {
+
+    }
+    includeJSFooterlibs {
+
+    }
+    includeJSFooter {
+        marcautemplate_script_manifest = EXT:marcau_template/Resources/Public/JavaScript/manifest.js
+        marcautemplate_script_libraries = EXT:marcau_template/Resources/Public/JavaScript/libraries.js
+        marcautemplate_cript_main = EXT:marcau_template/Resources/Public/JavaScript/main.js
+    }
+    CSS_inlineStyle (
+        :root {
+            --color-dunkel: rgba({$settings.page.color-dunkel}, 1);
+            --color-mittel: rgba({$settings.page.color-mittel}, 1);
+            --color-hell: rgba({$settings.page.color-hell}, 1);
+        }
+        main a {
+            color: rgba({$settings.page.color-mittel}, 1);
+        }
+        html, body {
+            font-family: '{$settings.font.family}', sans-serif;
+        }
+        .color-dunkel {
+            background-color: rgba({$settings.page.color-dunkel}, 1);
+            color:white;
+        }
+        .m-layout-3--bg-gradient {
+            background: linear-gradient(to bottom, rgba({$settings.page.color-dunkel}, 1) 75%, rgba({$settings.page.color-dunkel}, 0) 50%);
+        }
+        .m-button {
+            background-color: rgba({$settings.page.color-dunkel}, {$settings.page.button-transparenz});
+            color: rgba({$settings.page.color-dunkel}, 1);
+        }
+        .m-button:hover{
+            background-color: rgba({$settings.page.color-dunkel}, 1);
+            color: rgba({$settings.page.color-hell}, 1);
+        }
+        .button-border {
+            border-color: rgba({$settings.page.color-dunkel}, 1);
+        }
+        .border-mittel {
+            border-color: rgba({$settings.page.color-mittel}, 1);
+        }
+        .m-icon-plus {
+          fill:rgba({$settings.page.color-mittel}, 1);
+        }
+        .m-button-inverted {
+            background-color: rgba({$settings.page.color-hell}, {$settings.page.button-transparenz});
+            color: rgba({$settings.page.color-hell}, 1);
+        }
+        .m-button-inverted:hover{
+            background-color: rgba({$settings.page.color-hell}, 1);
+            color: rgba({$settings.page.color-dunkel}, 1);
+        }
+        .button-border-inverted {
+            border-color: rgba({$settings.page.color-hell}, 1);
+        }
+        .color-mittel {
+            background-color: rgba({$settings.page.color-mittel}, 1);
+        }
+        .text-color-mittel {
+            color: rgba({$settings.page.color-mittel}, 1);
+        }
+        .color-hell {
+            background-color: rgba({$settings.page.color-hell}, 1);
+        }
+        .mm-menu {height: calc( 100% - {$settings.page.headerheight} ) !important;}
+     )
+}
+["{$settings.page.button-transparenz}" == "1"]
+page.cssInline {
+    100 = TEXT
+    100.value (
+        .m-button { color: rgba({$settings.page.color-hell}, 1);}
+        .m-button:hover {
+            background-color: rgba({$settings.page.color-hell}, 1);
+            color: rgba({$settings.page.color-dunkel}, 1);
+            border-color: rgba({$settings.page.color-dunkel}, 1);
+        }
+        .m-button-inverted {
+        background-color: unset
+        }
+    )
+}
+[END]
+["{$settings.fontstyle.nav.uppercase}" == "1"]
+page.cssInline {
+    110 = TEXT
+    110.value (
+        .m-menu__item-link {
+        	text-transform: uppercase;
+        	letter-spacing: 0.1rem;
+        }
+    )
+}
+[END]
+["{$settings.fontstyle.nav.color}" == "1"]
+page.cssInline {
+    115 = TEXT
+    115.value (
+        .m-menu__item-link {
+            color: var(--color-dunkel);
+        }
+        .m-menu__item-link:hover,
+        .m-menu__item-link.active {
+            border-color: var(--color-dunkel);
+        }
+        .m-submenu {
+            color: var(--color-dunkel);
+
+        }
+    )
+}
+[END]
+
+["{$settings.fontstyle.h1.uppercase}" == "1"]
+page.cssInline {
+    120 = TEXT
+    120.value (
+        h1,h2 {
+        	text-transform: uppercase;
+        	letter-spacing: 0.1rem;
+        }
+    )
+}
+[END]
+["{$settings.fontstyle.h1.color}" == "1"]
+page.cssInline {
+    125 = TEXT
+    125.value (
+        h1,h2 {
+        	color: var(--color-dunkel);
+        }
+    )
+}
+[END]
+["{$settings.fontstyle.button.uppercase}" == "1"]
+page.cssInline {
+    130 = TEXT
+    130.value (
+        .m-button,.m-button-inverted {
+        	text-transform: uppercase;
+        	letter-spacing: 0.1rem;
+        }
+    )
+}
+[END]
+
+["{$settings.tracking.google.enable}" == "1"]
+
+page {
+    headerData.45678 = TEXT
+    headerData.45678.value (
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={$settings.tracking.google.trackingID}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '{$settings.tracking.google.trackingID}');
+</script>
+    )
+}
+[END]
+
+
+
+
+################
+#### CONFIG ####
+################
+config {
+    absRefPrefix = auto
+    no_cache = {$config.no_cache}
+    uniqueLinkVars = 1
+    # Setzt den Seitentitel vor den Website-Titel aus dem TypoScript-Template
+    pageTitleFirst = 1
+    linkVars = L
+    prefixLocalAnchors = {$config.prefixLocalAnchors}
+    renderCharset = utf-8
+    metaCharset = utf-8
+    doctype = html5
+    removeDefaultJS = {$config.removeDefaultJS}
+    inlineStyle2TempFile = 1
+    admPanel = {$config.admPanel}
+    debug = 0
+    cache_period = 86400
+    sendCacheHeaders = {$config.sendCacheHeaders}
+    intTarget =
+    extTarget =
+    disablePrefixComment = 1
+    index_enable = 1
+    index_externals = 1
+    index_metatags = 1
+    headerComment = {$config.headerComment}
+
+    // Disable Image Upscaling
+    noScaleUp = 1
+
+    // Compression and Concatenation of CSS and JS Files
+    compressJs = 0
+    compressCss = 0
+    concatenateJs = 0
+    concatenateCss = 0
+}
+
+### Settings for Live MIUXTEMPLATE:CONF Robots / Live
+["{$settings.robots}" == "1"]
+page {
+    meta {
+        robots = index,follow
+    }
+}
+config {
+    // Concatenation of CSS and JS Files
+    concatenateJs = 1
+    concatenateCss = 1
+}
+[END]
+
+plugin.tx_dp_cookieconsent._LOCAL_LANG {
+    de {
+        message = Wir verwenden Tracking-Software und Cookies um die Benutzerfreundlichkeit dieser Website zu optimieren. Mit der weiteren Nutzung akzeptieren Sie unsere
+        dismiss = Einverstanden
+        link = Datenschutzrichtlinien
+    }
+}

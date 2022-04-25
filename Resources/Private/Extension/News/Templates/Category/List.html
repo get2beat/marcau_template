@@ -1,0 +1,85 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:layout name="General" />
+<!--
+	=====================
+		Templates/Category/List.html
+-->
+
+<f:section name="content">
+	<f:if condition="{categories}">
+		<f:then>
+            <section class="m-news-categories pt-16 hidden xl:block container mx-auto xl:mb-12">
+                <div class="flex justify-center xl:-mx-1">
+                    <f:render section="categoryTree" arguments="{categories:categories,overwriteDemand:overwriteDemand}" />
+                </div>
+            </section>
+            <section class="m-news-categories-mobile xl:hidden container mx-auto">
+                <div class="w-full mx-auto mb-4 px-8">
+                    <div class="dropdown relative z-10">
+                        <f:for each="{categories}" as="category">
+                            <button class="w-full  bg-green-primary text-white font-semibold py-2 px-4 inline-flex items-center">
+                                    <div class="m-category flex-grow text-left  text-sm uppercase px-6  active">
+                                        {category.item.title}
+                                    </div>
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path> </svg>
+                            </button>
+                            <ul class="dropdown-menu absolute w-full hidden bg-white">
+
+                                <f:if condition="{category.children}">
+                                    <f:for each="{category.children}" as="category">
+                                        <f:if condition="{category.item.uid} == {overwriteDemand.categories}">
+                                            <f:then>
+                                                <li class="label pl-4 py-2">
+                                                <f:link.page title="{category.item.title}" class="active" pageUid="{settings.listPid}"
+                                                             additionalParams="{tx_news_pi1:{overwriteDemand:{categories: category.item.uid}}}">
+                                                    <div class="w-full inline-flex items-center text-green-primary font-semibold text-sm uppercase px-6">{category.item.title}</div>
+                                                </f:link.page>
+                                                </li>
+                                            </f:then>
+                                            <f:else>
+                                                <li class="label pl-4 py-2">
+                                                <f:link.page title="{category.item.title}" pageUid="{settings.listPid}"
+                                                             additionalParams="{tx_news_pi1:{overwriteDemand:{categories: category.item.uid}}}">
+                                                    <div class="w-full inline-flex items-center font-semibold text-sm uppercase px-6">{category.item.title}</div>
+                                                </f:link.page>
+                                                </li>
+                                            </f:else>
+                                        </f:if>
+                                    </f:for>
+                                </f:if>
+
+                            </ul>
+                        </f:for>
+                    </div>
+                </div>
+            </section>
+		</f:then>
+		<f:else>
+			<f:translate key="list_nocategoriesfound" />
+		</f:else>
+	</f:if>
+</f:section>
+
+<f:section name="categoryTree">
+    <f:for each="{categories}" as="category">
+            <f:if condition="{category.item.uid} == {overwriteDemand.categories}">
+                <f:then>
+                    <f:link.page title="{category.item.title}" class="active" pageUid="{settings.listPid}"
+                                 additionalParams="{tx_news_pi1:{overwriteDemand:{categories: category.item.uid}}}">
+                        <div class="m-button text-gray-link">{category.item.title}</div>
+                    </f:link.page>
+                </f:then>
+                <f:else>
+                    <f:link.page title="{category.item.title}" pageUid="{settings.listPid}"
+                                 additionalParams="{tx_news_pi1:{overwriteDemand:{categories: category.item.uid}}}">
+                        <div class="m-button">{category.item.title}</div>
+                    </f:link.page>
+                </f:else>
+            </f:if>
+            <f:if condition="{category.children}">
+                <f:render section="categoryTree" arguments="{categories: category.children,overwriteDemand:overwriteDemand}" />
+            </f:if>
+    </f:for>
+</f:section>
+</html>

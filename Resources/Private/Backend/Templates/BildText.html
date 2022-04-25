@@ -1,0 +1,116 @@
+
+
+<section class="m-modul-bildtext py-6" style=" {f:if(condition: '{row.tx_modul_backgroundcolor} == \'color-dunkel\'', then:'color:white; background-color: #111b2b;')}">
+    <div class="m-text container mx-auto flex justify-center ">
+        <f:if condition="{row.tx_modul_bildposition} == 1">
+            <f:then>
+                <div class="w-full {f:if(condition: '{row.tx_modul_bilddimension} == \'gross\'', then:'sm:w-3/5', else:'sm:w-2/5')}">
+                    <div class="">
+                        <f:if condition="{processedRow.assets}">
+                            <div class="w-full align-middle">
+                                <f:if condition="{processedRow.assets.0}">
+                                    <f:if condition="{processedRow.assets.0.uid_local.0.row.type} == 3">
+                                        <f:then>
+                                            <h3>Audio Datei</h3>
+                                        </f:then>
+                                        <f:else>
+                                            <f:image  src="{processedRow.assets.0.uid}" treatIdAsReference="1" width="396" />
+                                        </f:else>
+                                    </f:if>
+                                </f:if>
+                            </div>
+                        </f:if>
+                    </div>
+                </div>
+                <div class="w-full {f:if(condition: '{row.tx_modul_bilddimension} == \'gross\'', then:'sm:w-2/5', else:'sm:w-3/5')}">
+                    <div class="flex h-full {f:if(condition: '{row.tx_modul_bilddimension} == \'gross\'', then:'xl:pl-36 xl:pr-12', else:'xl:pl-48 xl:pr-24')}">
+                        <div class="m-auto">
+                            <f:if condition="{row.tx_modul_showtitle}">
+                                <f:if condition="{row.tx_modul_h1} == '1'">
+                                    <f:then>
+                                        <h1 class="text-5xl text-red-500"><f:format.html parseFuncTSPath="lib.parseFunc_RTE">{processedRow.header} (H1)</f:format.html></h1>
+                                    </f:then>
+                                    <f:else>
+                                        <h2 class="text-4xl "><f:format.html parseFuncTSPath="lib.parseFunc_RTE">{processedRow.header}</f:format.html></h2>
+                                    </f:else>
+                                </f:if>
+                            </f:if>
+                            <div class="m-text">
+                                <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{processedRow.bodytext}</f:format.html>
+                                <f:if condition="{processedRow.tx_modul_link}">
+                                    <div class="my-6 p-2 w-24 border border-black">
+                                        <f:if condition="{processedRow.tx_modul_link_title}">
+                                            <f:then>
+                                                {processedRow.tx_modul_link_title}
+                                            </f:then>
+                                            <f:else>
+                                                mehr
+                                            </f:else>
+                                        </f:if>
+                                    </div>
+                                </f:if>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </f:then>
+            <f:else>
+
+                <div class="w-full {f:if(condition: '{row.tx_modul_bilddimension} == \'gross\'', then:'sm:w-2/5', else:'sm:w-3/5')}">
+                    <div class="flex h-full {f:if(condition: '{row.tx_modul_bilddimension} == \'gross\'', then:'xl:pl-12 xl:pr-6', else:'xl:pl-48 xl:pr-24')}">
+                        <div class="m-auto">
+                            <f:if condition="{row.tx_modul_showtitle}">
+                                <f:if condition="{row.tx_modul_h1} == '1'">
+                                    <f:then>
+                                        <h1 class="text-5xl text-red-500"><f:format.html parseFuncTSPath="lib.parseFunc_RTE">{processedRow.header} (H1)</f:format.html></h1>
+                                    </f:then>
+                                    <f:else>
+                                        <h2 class="text-4xl "><f:format.html parseFuncTSPath="lib.parseFunc_RTE">{processedRow.header}</f:format.html></h2>
+                                    </f:else>
+                                </f:if>
+                            </f:if>
+                            <div class="">
+                                <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{processedRow.bodytext}</f:format.html>
+                                <f:if condition="{processedRow.tx_modul_link}">
+                                    <div class="my-6 p-2 w-24 border border-black">
+                                        <f:if condition="{processedRow.tx_modul_link_title}">
+                                            <f:then>
+                                                {processedRow.tx_modul_link_title}
+                                            </f:then>
+                                            <f:else>
+                                                mehr
+                                            </f:else>
+                                        </f:if>
+                                    </div>
+                                </f:if>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full {f:if(condition: '{row.tx_modul_bilddimension} == \'gross\'', then:'sm:w-3/5', else:'sm:w-2/5')}">
+                    <div class="">
+                        <f:if condition="{processedRow.assets}">
+                            <div class="w-full ">
+                                <f:if condition="{processedRow.assets.0}">
+                                    <f:if condition="{processedRow.assets.0.originalFile.properties.type} == 3">
+                                        <f:then>
+                                            Audio Datei: {processedRow.assets}
+                                        </f:then>
+                                        <f:else>
+                                            <f:image  src="{processedRow.assets.0.uid}" treatIdAsReference="1" width="396" />
+                                        </f:else>
+                                    </f:if>
+                                </f:if>
+                            </div>
+                            <f:if condition="{data_tx_modul_bild.0.description}">
+                                <div class="text-sm">{data_tx_modul_bild.0.description}</div>
+                            </f:if>
+                        </f:if>
+                    </div>
+                </div>
+            </f:else>
+        </f:if>
+    </div>
+</section>

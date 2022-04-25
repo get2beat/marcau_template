@@ -1,0 +1,115 @@
+#
+# TCEFORM
+#
+TCEFORM {
+    pages {
+        subtitle.disabled = 0
+        abstract.disabled = 1
+        description.disabled = 0
+    }
+    tt_content {
+        #CType.removeItems = header,text,textpic,image,textmedia,header,bullets,table,menu,list,login,mailform,search,shortcut,div
+        #CType.disabled = 1
+        colPos.disabled = 1
+        #header_layout.disabled = 1
+        header_layout{
+            removeItems = 1,4,5
+            altLabels {
+                2 = H2
+                3 = H3
+            }
+        }
+        header_position.disabled = 0
+        date.disabled = 1
+        header_link.disabled = 1
+        subheader.disabled = 0
+        subheader {
+            label = Navigationstitel (section)
+        }
+
+        layout.disabled = 1
+        frame_class.disabled = 1
+        sectionIndex.disabled = 1
+
+        space_before_class.disabled = 1
+        space_after_class.disabled = 1
+        linkToTop.disabled = 1
+
+        starttime.disabled = 1
+        endtime.disabled = 1
+        fe_group.disabled = 1
+        editlock.disabled = 1
+        categories.disabled = 1
+        rowDescription.disabled = 1
+    }
+    sys_file_reference {
+        alternative.disabled = 1
+        sys_file_reference.link.disabled = 1
+        sys_file_reference.fal_related_files.disabled = 1
+    }
+}
+TCAdefaults.tt_content.frame_class = none
+
+
+
+### Alles unterhalb Ordner Daten ###
+
+#[6,257 in tree.rootLineIds]
+
+    TCAdefaults.sys_file_reference.showinpreview = 1
+    TCEFORM {
+        tx_news_domain_model_news {
+            #teaser.disabled = 1
+            bodytext.disabled = 1
+            #istopnews.disabled = 1
+            #datetime.disabled = 1
+            #archive.disabled = 1
+            #content_elements.disabled = 1
+            related.disabled = 1
+            related_from.disabled = 1
+            related_links.disabled = 1
+            tags.disabled = 1
+            #alternative_title.disabled = 1
+            fal_related_files.disabled = 1
+            fe_group.disabled = 1
+            editlock.disabled = 1
+            starttime.disabled = 1
+            endtime.disabled = 1
+            notes.disabled = 1
+
+            sys_language_uid.disabled = 0
+
+        }
+    }
+#[end]
+
+
+### DATEN NEWS ###
+[43 in tree.rootLineIds]
+
+[end]
+
+### DATEN NUTZUNGEN ###
+[45 in tree.rootLineIds]
+
+[end]
+
+tx_news.module {
+    alwaysShowFilter = 1
+    filters {
+        topNewsRestriction = 0
+        timeRestriction = 0
+        archived = 0
+        number = 0
+        categoryConjunction = 1
+        includeSubCategories = 0
+    }
+}
+
+### News Administration works only in Page TSconfig
+
+tx_news.templateLayouts {
+    1 = Quadrat / Hover Text
+    2 = Querformat 3/2
+    3 = Akkordeon (Titel/Teaser)
+}

@@ -1,0 +1,110 @@
+
+renderingOptions:
+  submitButtonLabel: Submit
+type: Form
+identifier: newsletter
+label: Newsletter
+prototypeName: standard
+finishers:
+  -
+    options:
+      subject: 'Anmeldung Newsletter'
+      senderAddress: '{email}'
+      senderName: '{firstname} {name}'
+      recipients:
+        info@marcau.ch: marcau
+    identifier: EmailToReceiver
+  -
+    options:
+      pageUid: '603'
+      additionalParameters: ''
+    identifier: Redirect
+renderables:
+  -
+    renderingOptions:
+      previousButtonLabel: 'Previous step'
+      nextButtonLabel: 'Next step'
+    type: Page
+    identifier: page-1
+    label: Step
+    renderables:
+      -
+        defaultValue: ''
+        type: Text
+        identifier: firstname
+        label: Vorname
+        properties:
+          elementDescription: ''
+          fluidAdditionalAttributes:
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Text
+        identifier: name
+        label: Nachname
+        properties:
+          fluidAdditionalAttributes:
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Text
+        identifier: text-1
+        label: 'Strasse / Nr.'
+      -
+        defaultValue: ''
+        type: Text
+        identifier: text-2
+        label: 'PLZ / Ort'
+      -
+        defaultValue: ''
+        type: Email
+        identifier: email
+        label: E-Mail
+        properties:
+          fluidAdditionalAttributes:
+            required: required
+        validators:
+          -
+            identifier: EmailAddress
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Textarea
+        identifier: message
+        label: Mitteilung
+      -
+        label: Inhaltselement
+        properties:
+          contentElementUid: '24'
+        type: ContentElement
+        identifier: contentelement-2
+      -
+        type: Checkbox
+        identifier: confirm
+        label: Zustimmen
+        properties:
+          fluidAdditionalAttributes:
+            required: required
+          validationErrorMessages:
+            -
+              code: 1221560910
+              message: 'Datenschutzerklärung zustimmen'
+            -
+              code: 1221560718
+              message: 'Datenschutzerklärung zustimmen'
+            -
+              code: 1347992400
+              message: 'Datenschutzerklärung zustimmen'
+            -
+              code: 1347992453
+              message: 'Datenschutzerklärung zustimmen'
+        validators:
+          -
+            identifier: NotEmpty

@@ -4,8 +4,8 @@
 mod {
     web_layout {
         BackendLayouts {
-            jaromir {
-                title = jaromir
+            jarolanding {
+                title = jaro Landing Page
                 config {
                     backend_layout {
                         colCount = 1
@@ -14,7 +14,7 @@ mod {
                             1 {
                                 columns {
                                     1 {
-                                        name = LLL:EXT:marcau_template/Resources/Private/Language/locallang_be.xlf:backend_layout.column.normal
+                                        name = normal
                                         colPos = 0
                                     }
                                 }
@@ -22,7 +22,7 @@ mod {
                         }
                     }
                 }
-                icon = EXT:marcau_template/Resources/Public/Images/BackendLayouts/default.png
+                icon = EXT:mtemplate/Resources/Public/Icons/BackendLayouts/default.svg
             }
         }
     }
